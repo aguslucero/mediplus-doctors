@@ -1,0 +1,9 @@
+<app-header></app-header>
+
+<app-patient-home-page
+  *ngIf="patientStatusView.isHomeView">
+</app-patient-home-page>
+
+<app-patient-request-appointments
+  *ngIf="patientStatusView.isRequestAppointmentView">
+</app-patient-request-appointments>

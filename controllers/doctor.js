@@ -1,11 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const doctorsList = require('../models/doctors');
+const Doctor = require('../models/doctor');
 const appointmentsList = require('../models/appointments');
+const PersonModel = require('../models/person');
 
 //GET HTTP method to /pacientes
 router.get('/',(req,res) => {
-    doctorsList.getAllLists((err, lists) => {
+    Doctor.getAllLists((err, lists) => {
+        if (err) {
+            res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
+        } else {
+            res.write(JSON.stringify({success: true, lists:lists},null,2));
+            res.end();
+        }
+    })
+});
+
+router.get('/specialist/:specialistName',(req,res) => {
+//    let specialist = req.body.specialist;
+    console.log(req.params.specialistName); 
+    Doctor.find({gender:'Man'}, (err, lists) => {
         if (err) {
             res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
         } else {
@@ -18,13 +32,15 @@ router.get('/',(req,res) => {
 //POST HTTP method to /doctors
 
 router.post('/', (req,res,next) => {
-        let newList = new doctorsList({
+        let newDoctor = new Doctor({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             dni: req.body.dni,
-            name: req.body.name,
-            surname: req.body.surname,
-            gender: req.body.gender
+            gender: req.body.gender,
+            phone: req.body.phone,
+            birthDate: req.body.birthDate 
         });
-        doctorsList.addList(newList, (err, list) => {
+        Doctor.addList(newDoctor, (err, list) => {
             if (err) {
                 res.json({success: false, message: `failed to create a new list. Error: ${err}`})
             } else {
@@ -33,16 +49,17 @@ router.post('/', (req,res,next) => {
         })
     });
 
+// METODO PARA AGREGAR TURNOS
 
 //DELETE HTTP method to /doctors. Here, we pass in a params which is the object dni.
 router.delete('/', (req,res,next) => {
     
     let id;
     let dni = parseInt(req.body.dni);
-    doctorsList.findOne({dni: dni}, function (err, obj) {
+    Doctor.findOne({dni: dni}, function (err, obj) {
         id = obj.id;  
         //Call the model method deleteListById
-        doctorsList.deleteListById(id,(err,list) => {
+        Doctor.deleteListById(id,(err,list) => {
             if(err) {
                 res.json({success:false, message: `Failed to delete the list. Error: ${err}`});
             }
@@ -68,7 +85,7 @@ router.delete('/', (req,res,next) => {
             res.json({success: false, message: `failed to create a new list. Error: ${err}`})
         } else {
             console.log('turno creado. Asignandolo al doctor.');
-            doctorsList.addAppointment(req.body.doctorId, list.id, (err,list) => {
+            Doctor.addAppointment(req.body.doctorId, list.id, (err,list) => {
                 if (err) {
                     res.json({success: false, message: `failed to create a new list. Error: ${err}`})
                 } else {

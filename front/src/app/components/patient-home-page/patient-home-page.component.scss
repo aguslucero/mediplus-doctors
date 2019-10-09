@@ -1,0 +1,44 @@
+@media (min-width: 1px){
+  .home-page-container{
+    height: 500px;
+
+    h1 {
+      color: white;
+    }
+  }
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .home-button {
+    background-color: rgb(26, 88, 52);
+    width: 100%;
+    height: 95px;
+    border-radius: 8px;
+  }
+  .button-content {
+    color: white;
+    font-weight: 550;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media(min-width: 768px) {
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.home-button {
+  width: 30%;
+}
+
+}

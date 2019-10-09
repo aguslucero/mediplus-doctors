@@ -1,0 +1,19 @@
+
+.header {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(26, 88, 52);
+};
+.flex-container {
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    color: white;
+    font-weight: 550;
+  }
+}
+

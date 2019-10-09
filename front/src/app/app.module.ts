@@ -12,6 +12,12 @@ import { reducers } from './containers/reducers/';
 import { PatientHomePageComponent } from './components/patient-home-page/patient-home-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PatientRequestAppointmentsComponent } from './components/patient-request-appointments/patient-request-appointments.component';
+import bootstrap from 'bootstrap';
+import { PatientSelectSpecialistComponent } from './components/patient-select-specialist/patient-select-specialist.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-filtered.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +25,16 @@ import { PatientRequestAppointmentsComponent } from './components/patient-reques
     PatientPageComponent,
     PatientHomePageComponent,
     HeaderComponent,
-    PatientRequestAppointmentsComponent
+    PatientRequestAppointmentsComponent,
+    PatientSelectSpecialistComponent,
+    DoctorFilteredComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({}),
-    StoreModule.forFeature('patientView', reducers)
+    StoreModule.forFeature('patientView', reducers),
+    EffectsModule.forRoot([]),
+    HttpClientModule
 
   ],
   providers: [],

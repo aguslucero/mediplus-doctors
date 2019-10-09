@@ -1,9 +1,17 @@
 <app-header></app-header>
 
-<app-patient-home-page
-  *ngIf="patientStatusView.isHomeView">
-</app-patient-home-page>
+<div class="home-background">
+  <div class="container">
+    <app-patient-home-page
+      *ngIf="patientStatusView.isHomeView">
+    </app-patient-home-page>
 
-<app-patient-request-appointments
-  *ngIf="patientStatusView.isRequestAppointmentView">
-</app-patient-request-appointments>
+    <app-patient-request-appointments
+      *ngIf="patientStatusView.isRequestAppointmentView">
+    </app-patient-request-appointments>
+
+    <app-patient-select-specialist
+      *ngIf="patientStatusView.isSelectSpecialist">
+    </app-patient-select-specialist>
+  </div>
+</div>

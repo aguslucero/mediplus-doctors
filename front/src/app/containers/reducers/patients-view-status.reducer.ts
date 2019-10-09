@@ -4,12 +4,14 @@ export interface State {
   isHomeView: boolean;
   isRequestAppointmentView: boolean;
   isRequestedAppointmentsView: boolean;
+  isSelectSpecialist: boolean;
 }
 
 const initialState = {
   isHomeView: true,
   isRequestAppointmentView: false,
-  isRequestedAppointmentsView: false
+  isRequestedAppointmentsView: false,
+  isSelectSpecialist: false
 };
 
 type ActionsType =
@@ -22,7 +24,8 @@ export function reducer( state = initialState, action: ActionsType) : State {
         ...state,
         isHomeView: true,
         isRequestAppointmentView: false,
-        isRequestedAppointmentsView: false
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: false
       };
     }
     case PatientViewActionTypes.RequestAppointment: {
@@ -30,7 +33,9 @@ export function reducer( state = initialState, action: ActionsType) : State {
         ...state,
         isHomeView: false,
         isRequestAppointmentView: true,
-        isRequestedAppointmentsView: false
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: false
+
       };
     }
     case PatientViewActionTypes.RequestedAppointments: {
@@ -38,7 +43,18 @@ export function reducer( state = initialState, action: ActionsType) : State {
         ...state,
         isHomeView: false,
         isRequestAppointmentView: false,
-        isRequestedAppointmentsView: true
+        isRequestedAppointmentsView: true,
+        isSelectSpecialist: false
+
+      };
+    }
+    case PatientViewActionTypes.SelectSpecialist: {
+      return {
+        ...state,
+        isHomeView: false,
+        isRequestAppointmentView: false,
+        isRequestedAppointmentsView: false,
+        isSelectSpecialist: true
       };
     }
     default: {

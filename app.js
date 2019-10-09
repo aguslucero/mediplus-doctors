@@ -23,15 +23,17 @@ app.use(bodyParser.json());
 
 
 // -------START CONTROLLERS---------------
-const pacientes = require('./controllers/pacientes');
+const pacientes = require('./controllers/patient');
 app.use('/pacientes', pacientes);
 
-const doctors = require('./controllers/doctors');
+const doctors = require('./controllers/doctor');
 app.use('/doctors', doctors);
 
 const appointments = require('./controllers/appointments');
 app.use('/appointments', appointments);
 
+const healthcare = require('./controllers/healthcare');
+app.use('/healthcare', healthcare);
 // -------END CONTROLLERS-----------------
 
 

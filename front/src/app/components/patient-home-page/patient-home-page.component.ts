@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-patient-home-page',
   templateUrl: './patient-home-page.component.html',
-  styleUrls: ['./patient-home-page.component.css']
+  styleUrls: ['./patient-home-page.component.scss']
 })
 export class PatientHomePageComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class PatientHomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToRequestAppointment() {
-    this.patientViewStore.dispatch(new PatientViewActions.RequestAppointment);
+  goToSelectSpecialist() {
+    this.patientViewStore.dispatch(new PatientViewActions.SelectSpecialist);
   }
 }

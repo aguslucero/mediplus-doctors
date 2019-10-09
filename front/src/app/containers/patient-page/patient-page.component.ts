@@ -12,7 +12,7 @@ import * as patientViewStatusActions from '../actions/patient-view-status.action
 @Component({
   selector: 'app-patient-page',
   templateUrl: './patient-page.component.html',
-  styleUrls: ['./patient-page.component.css']
+  styleUrls: ['./patient-page.component.scss']
 })
 export class PatientPageComponent implements OnInit {
   patientViewStatus$: Observable<fromPatientViewStatus.State>;

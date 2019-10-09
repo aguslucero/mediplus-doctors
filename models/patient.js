@@ -6,22 +6,33 @@ const pacienteSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    name: {
+    firstName: {
         type: String,
         required: true
     },
-    surname: {
+    lastName: {
         type: String,
         required: true
     },
     gender: {
         type: String,
         required: true,
-        enum: ['Hombre', 'Mujer', 'Otro']
+        enum: ['Man', 'Women', 'Other']
     },
-    requieredAppointments: {
-        type: [mongoose.Schema.Types.ObjectId]
-    }
+    birthDate: {
+        type: Date,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    healthcare: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'patientHealthcareSchema'
+        }
+    ]
 });
 
 const pacientesList = module.exports = mongoose.model('pacientesList', pacienteSchema );

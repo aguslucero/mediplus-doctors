@@ -24,9 +24,12 @@
     "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "rxjs": "6.0.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",

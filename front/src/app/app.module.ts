@@ -17,6 +17,7 @@ import { PatientSelectSpecialistComponent } from './components/patient-select-sp
 
 import {HttpClientModule} from '@angular/common/http';
 import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-filtered.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-fil
     HeaderComponent,
     PatientRequestAppointmentsComponent,
     PatientSelectSpecialistComponent,
-    DoctorFilteredComponent
+    DoctorFilteredComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

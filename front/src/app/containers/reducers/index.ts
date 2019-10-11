@@ -1,11 +1,11 @@
 import { createSelector, ActionReducerMap } from '@ngrx/store';
 
-import * as fromPatientViewStatus from './patients-view-status.reducer';
+import * as fromDoctorViewStatus from './doctor-view-status.reducer';
 import * as fromDoctorsFilteredStatus from './doctors-filtered.reducer';
 
 
-export interface PatientViewState {
-  patientViewStatus: fromPatientViewStatus.State;
+export interface DoctorViewState {
+  DoctorViewStatus: fromDoctorViewStatus.State;
   doctorsStatus: fromDoctorsFilteredStatus.State;
 }
 export  interface DoctorsFilteredState {
@@ -13,12 +13,12 @@ export  interface DoctorsFilteredState {
 }
 
 export interface State {
-  patientView: PatientViewState;
+  DoctorView: DoctorViewState;
   doctorsFiltered: DoctorsFilteredState;
 }
 
-export const reducers: ActionReducerMap<PatientViewState> = {
-  patientViewStatus: fromPatientViewStatus.reducer,
+export const reducers: ActionReducerMap<DoctorViewState> = {
+  DoctorViewStatus: fromDoctorViewStatus.reducer,
   doctorsStatus: fromDoctorsFilteredStatus.reducer
 };
 export const reducersDoctorsFiltered: ActionReducerMap<DoctorsFilteredState> = {
@@ -32,9 +32,9 @@ export const getDoctorsFilteredStatus = createSelector(
     (state: DoctorsFilteredState) => state.doctorsFilteredStatus
   );
 
-export const getPatientViewEntity = (state: State) => state.patientView;
+export const getDoctorViewEntity = (state: State) => state.DoctorView;
 
-export const getPatientViewStatus = createSelector(
-  getPatientViewEntity,
-  (state: PatientViewState) => state.patientViewStatus
+export const getDoctorViewStatus = createSelector(
+  getDoctorViewEntity,
+  (state: DoctorViewState) => state.DoctorViewStatus
 );

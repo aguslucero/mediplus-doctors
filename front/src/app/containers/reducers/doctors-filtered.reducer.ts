@@ -1,4 +1,4 @@
-import { PatientViewActionTypes, PatientViewActionsUnion } from '../actions/patient-view-status.actions';
+import { DoctorViewActionTypes, DoctorViewActionsUnion } from '../actions/doctor-view-status.actions';
 import { DoctorsFilteredActionTypes, DoctorsFilteredActionsUnion } from '../actions/doctors-filtered.actions';
 
 

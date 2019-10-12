@@ -16,6 +16,7 @@ import { DoctorFilteredComponent } from './components/doctor-filtered/doctor-fil
 import { FooterComponent } from './components/footer/footer.component';
 import { DoctorHomePageComponent } from './components/doctor-home-page/doctor-home-page.component';
 import { DiaryComponent } from './components/diary/diary.component';
+import { PendingAppointmentComponent } from './components/pending-appointment/pending-appointment.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DiaryComponent } from './components/diary/diary.component';
     FooterComponent,
     DoctorHomePageComponent,
     DoctorPageComponent,
-    DiaryComponent
+    DiaryComponent,
+    PendingAppointmentComponent
   ],
   imports: [
     BrowserModule,

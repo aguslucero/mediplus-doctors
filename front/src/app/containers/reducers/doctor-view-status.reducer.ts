@@ -2,12 +2,14 @@ import { DoctorViewActionTypes, DoctorViewActionsUnion } from '../actions/doctor
 
 export interface State {
   isHomeView: boolean;
-  isGoToDiary: boolean;
+  isDiaryView: boolean;
+  isPendingAppointment: boolean;
 }
 
 const initialState = {
   isHomeView: true,
-  isGoToDiary: false
+  isDiaryView: false,
+  isPendingAppointment: false
 };
 
 type ActionsType =
@@ -19,14 +21,24 @@ export function reducer( state = initialState, action: ActionsType): State {
       return {
         ...state,
         isHomeView: true,
-        isGoToDiary: false
+        isDiaryView: false,
+        isPendingAppointment: false
       };
     }
-    case DoctorViewActionTypes.GoToDiary: {
+    case DoctorViewActionTypes.DiaryView: {
       return {
         ...state,
         isHomeView: false,
-        isGoToDiary: true
+        isDiaryView: true,
+        isPendingAppointment: false
+      };
+    }
+    case DoctorViewActionTypes.PendingAppointment: {
+      return {
+        ...state,
+        isHomeView: false,
+        isDiaryView: false,
+        isPendingAppointment: true
       };
     }
     default: {

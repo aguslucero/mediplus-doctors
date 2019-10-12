@@ -18,7 +18,11 @@ export class DoctorHomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToDiary() {
-    this.DoctorViewStore.dispatch(new DoctorViewActions.GoToDiary);
+  GoToDiaryView() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.DiaryView);
+  }
+
+  GoToPendingAppointment() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.PendingAppointment);
   }
 }

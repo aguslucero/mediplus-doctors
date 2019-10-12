@@ -10,10 +10,13 @@
                     <app-doctor-home-page
                       *ngIf="doctorStatusView.isHomeView">
                     </app-doctor-home-page>
-
                     <app-diary
-                      *ngIf="doctorStatusView.isGoToDiary">
+                      *ngIf="doctorStatusView.isDiaryView">
                     </app-diary>
+                    <app-pending-appointment
+                      *ngIf="doctorStatusView.isPendingAppointment">
+                    </app-pending-appointment>
+
 
                 </div>
 						<a class="main_btn mr-10" href="#">get started</a>

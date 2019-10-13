@@ -17,7 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DoctorHomePageComponent } from './components/doctor-home-page/doctor-home-page.component';
 import { DiaryComponent } from './components/diary/diary.component';
 import { PendingAppointmentComponent } from './components/pending-appointment/pending-appointment.component';
-
+import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,16 @@ import { PendingAppointmentComponent } from './components/pending-appointment/pe
     DoctorHomePageComponent,
     DoctorPageComponent,
     DiaryComponent,
-    PendingAppointmentComponent
+    PendingAppointmentComponent,
+    AppointmentTableComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('DoctorView', reducers),
     EffectsModule.forRoot([]),
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
 
   ],
   providers: [],

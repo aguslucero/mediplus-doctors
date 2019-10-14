@@ -19,6 +19,8 @@ import { DiaryComponent } from './components/diary/diary.component';
 import { PendingAppointmentComponent } from './components/pending-appointment/pending-appointment.component';
 import { AppointmentTableComponent } from './components/appointment-table/appointment-table.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from '@angular/material/badge';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {MatTableModule} from '@angular/material/table';
     StoreModule.forFeature('DoctorView', reducers),
     EffectsModule.forRoot([]),
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

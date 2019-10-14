@@ -57,3 +57,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 .mat-cell {
   text-align: center;
 }
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

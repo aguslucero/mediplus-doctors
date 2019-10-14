@@ -21,6 +21,8 @@ import { AppointmentTableComponent } from './components/appointment-table/appoin
 import {MatTableModule} from '@angular/material/table';
 import {MatBadgeModule} from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule , MatInputModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatTableModule,
     MatBadgeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [],

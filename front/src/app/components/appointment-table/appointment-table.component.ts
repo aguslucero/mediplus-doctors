@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatTableDataSource} from '@angular/material/table';
 
 
 export interface AppointmentInfo {
@@ -55,9 +56,13 @@ const ELEMENT_DATA: AppointmentInfo[] = [
 })
 
 export class AppointmentTableComponent  {
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   columnsToDisplay = ['name', 'day', 'hour', 'options'];
   expandedElement: AppointmentInfo | null;
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 
 

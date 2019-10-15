@@ -2,24 +2,22 @@
 
 <section class="home_banner_area">
 
+    <div class="container">
 
+       <app-doctor-home-page
+          *ngIf="doctorStatusView.isHomeView">
+       </app-doctor-home-page>
+       <app-diary
+          *ngIf="doctorStatusView.isDiaryView">
+       </app-diary>
+       <app-pending-appointment
+          *ngIf="doctorStatusView.isPendingAppointment">
+       </app-pending-appointment>
 
-                  <div class="container">
-                    <app-doctor-home-page
-                      *ngIf="doctorStatusView.isHomeView">
-                    </app-doctor-home-page>
-                    <app-diary
-                      *ngIf="doctorStatusView.isDiaryView">
-                    </app-diary>
-                    <app-pending-appointment
-                      *ngIf="doctorStatusView.isPendingAppointment">
-                    </app-pending-appointment>
-
-
-
-					</div>
+    </div>
 
 </section>
+
 <app-footer></app-footer>
 
 

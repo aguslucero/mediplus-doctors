@@ -7,7 +7,7 @@ is the file you need to edit to change the look of the
 theme.
 ---------------------------------------------------- */
 /*=====================================================================
-@Template Name: Builder Construction 
+@Template Name: Builder Construction
 @Author: Spondon IT
 @Developed By: Naim Lasker
 
@@ -22,14 +22,14 @@ Table of Content:
 06/ breadcrumb
 07/ about
 08/ team
-09/ project 
-10/ price 
-11/ team 
-12/ blog 
-13/ video  
-14/ features  
-15/ career  
-16/ contact 
+09/ project
+10/ price
+11/ team
+12/ blog
+13/ video
+14/ features
+15/ career
+16/ contact
 17/ footer
 
 =====================================================================*/
@@ -429,17 +429,18 @@ a {
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .home_banner_area {
-  background: url(../img/banner/home.jpg) no-repeat center bottom;
+  background: url(../img/banner/home.jpg) no-repeat center ;
   position: relative;
   z-index: 1;
-  height: 900px; }
+  height: 780px;
+}
   @media (max-width: 992px) {
     .home_banner_area {
       height: 600px; } }
   .home_banner_area .banner_inner {
     position: relative;
     width: 100%;
-    min-height: 900px; }
+    min-height: 750px; }
     .home_banner_area .banner_inner .banner_content {
       color: #000000;
       padding-top: 110px;

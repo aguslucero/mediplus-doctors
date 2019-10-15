@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-pending-appointment',
   templateUrl: './pending-appointment.component.html',
-  styleUrls: ['./pending-appointment.component.css']
+  styleUrls: ['./pending-appointment.component.scss']
 })
 export class PendingAppointmentComponent implements OnInit {
 

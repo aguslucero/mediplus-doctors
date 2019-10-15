@@ -22,6 +22,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatBadgeModule} from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule , MatInputModule } from '@angular/material';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { DiaryHeaderComponent } from './components/diary-header/diary-header.component';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import {MatFormFieldModule , MatInputModule } from '@angular/material';
     DoctorPageComponent,
     DiaryComponent,
     PendingAppointmentComponent,
-    AppointmentTableComponent
+    AppointmentTableComponent,
+    DiaryHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,11 @@ import {MatFormFieldModule , MatInputModule } from '@angular/material';
     MatBadgeModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
 
   ],
   providers: [],

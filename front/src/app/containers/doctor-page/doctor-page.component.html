@@ -10,6 +10,9 @@
        <app-diary
           *ngIf="doctorStatusView.isDiaryView">
        </app-diary>
+       <app-schedule-page
+        *ngIf="doctorStatusView.isScheduleView">
+       </app-schedule-page>
        <app-pending-appointment
           *ngIf="doctorStatusView.isPendingAppointment">
        </app-pending-appointment>

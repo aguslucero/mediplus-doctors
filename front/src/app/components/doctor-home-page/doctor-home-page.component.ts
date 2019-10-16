@@ -22,6 +22,10 @@ export class DoctorHomePageComponent implements OnInit {
     this.DoctorViewStore.dispatch(new DoctorViewActions.DiaryView);
   }
 
+  GoToScheduleView() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.ScheduleView);
+  }
+
   GoToPendingAppointment() {
     this.DoctorViewStore.dispatch(new DoctorViewActions.PendingAppointment);
   }

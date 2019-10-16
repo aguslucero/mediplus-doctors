@@ -1,0 +1,39 @@
+<div class="schedule-container">
+
+  <form #schedule = "ngForm" (ngSubmit) = "onClickSubmit(schedule.value)" class="form">
+    <mat-form-field>
+      <mat-select placeholder="Dia" name="day" ngModel>
+        <mat-option value="Lunes">Lunes</mat-option>
+        <mat-option value="Martes">Martes</mat-option>
+        <mat-option value="Miercoles">Miercoles</mat-option>
+        <mat-option value="Jueves">Jueves</mat-option>
+        <mat-option value="Viernes">Viernes</mat-option>
+        <mat-option value="Sabado">Sábado</mat-option>
+        <mat-option value="Domingo">Domingo</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Hora inicio</mat-label>
+      <input type="number" name="start" matInput placeholder="9" ngModel>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Hora fin</mat-label>
+      <input type="number" name="end" matInput placeholder="18" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Inicio descanso</mat-label>
+      <input type="number" name="bstart" matInput placeholder="12" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Fin descanso</mat-label>
+      <input type="number" name="bend" matInput placeholder="13" ngModel>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button>Guardar</button>
+  </form>
+</div>

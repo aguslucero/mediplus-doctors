@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 export enum DoctorViewActionTypes {
     Home = '[DoctorViewShown] Home',
     DiaryView = '[DiaryView] DiaryView',
+    ScheduleView = '[ScheduleView] ScheduleView',
     PendingAppointment = '[PendingAppointment] PendingAppointment'
 }
 
@@ -19,6 +20,12 @@ export class DiaryView implements Action {
   constructor() { }
 }
 
+export class ScheduleView implements Action {
+  readonly type = DoctorViewActionTypes.ScheduleView;
+
+  constructor() { }
+}
+
 export class PendingAppointment implements Action {
   readonly type = DoctorViewActionTypes.PendingAppointment;
 
@@ -27,4 +34,5 @@ export class PendingAppointment implements Action {
 export type DoctorViewActionsUnion =
   | Home
   | DiaryView
+  | ScheduleView
   | PendingAppointment;

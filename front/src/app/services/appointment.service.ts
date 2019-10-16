@@ -10,4 +10,5 @@ export class AppointmentService {
   getAppointments( ): Observable<any> {
     return this.httpClient.get('/doctors/appointments');
   }
+
 }

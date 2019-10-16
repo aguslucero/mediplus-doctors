@@ -3,16 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import { AppointmentService} from '../../services/appointment.service';
 import { element } from '@angular/core/src/render3/instructions';
-
-
-export interface AppointmentInfo {
-  name: string;
-  lastName: string;
-  day: string;
-  hour: string;
-  photo: string;
-  info: string;
-}
+import { AppointmentInfo } from '../../models/appointmentInfo';
 
 
  const ELEMENT_DATA: AppointmentInfo[] = [ ] ;
@@ -64,16 +55,7 @@ export class AppointmentTableComponent implements OnInit {
   expandedElement: AppointmentInfo | null;
   AppointmentInfo: AppointmentInfo ;
   constructor (private service: AppointmentService) { }
-
   ngOnInit() {
-    this.AppointmentInfo = {
-      name: '',
-      lastName: '',
-      day: '',
-      hour: '',
-      photo: '',
-      info: '',
-     };
    this.getAppointments();
   }
 
@@ -86,18 +68,14 @@ export class AppointmentTableComponent implements OnInit {
       data => {
        debugger
        data.forEach(element => {
-       this.AppointmentInfo.day  = element.date;
-       this.AppointmentInfo.name  = element.patient.person.firstName;
-       this.AppointmentInfo.lastName = element.patient.person.lastName;
-       this.AppointmentInfo.photo = 'FOTO';
-       this.AppointmentInfo.info  = 'aca va toda la infomacion asociada con el paciente';
-       ELEMENT_DATA.push(this.AppointmentInfo);
+        ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName, element.date));
+        console.log(ELEMENT_DATA);
+       });
+       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+       console.log(ELEMENT_DATA);
       });
-      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    console.log(ELEMENT_DATA);
     }
-    );
-   }
+
 
    anda() {
     this.service.getAppointments().subscribe(

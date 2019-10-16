@@ -8,8 +8,8 @@ const https = require('https');
 const api_helper = require('./api_helper')
 
 
-router.get('/all',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/all')
+router.get('/appointments',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/5da7756ee4d594146bf56595')
     .then(response => {
         res.json(response)
     })

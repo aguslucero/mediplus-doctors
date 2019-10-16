@@ -7,10 +7,7 @@ export class AppointmentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // getAppointments( id: string): Observable<any> {
-  //   return  this.http.get(`http://localhost:3001/vr/api/appointment/doctor/:${id}`);
-  // }
-  getAll( ): Observable<any> {
-    return this.httpClient.get('/doctors/all');
+  getAppointments( ): Observable<any> {
+    return this.httpClient.get('/doctors/appointments');
   }
 }

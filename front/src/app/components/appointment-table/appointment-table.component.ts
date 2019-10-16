@@ -5,37 +5,7 @@ import { AppointmentService} from '../../services/appointment.service';
 import { element } from '@angular/core/src/render3/instructions';
 import { AppointmentInfo } from '../../models/appointmentInfo';
 
-
  const ELEMENT_DATA: AppointmentInfo[] = [ ] ;
-//     name: 'Agustin Lucero',
-//     day: '20/11/2019',
-//     hour: '13:30 hs',
-//     photo: 'FOTO',
-//     info: `aca va toda la infomacion asociada con el paciente, tambien se le podria poner una descripcion
-//      del por que pide el turno.`
-//   }, {
-//     name: 'Juan Pardal',
-//     day: '20/11/2019',
-//     hour: '14:00 hs',
-//     photo: 'FOTO',
-//     info: `aca va toda la infomacion asociada con el paciente, tambien se le podria poner una descripcion
-//      del por que pide el turno.`
-//   }, {
-//     name: 'Jose Cisneros',
-//     day: '20/11/2019',
-//     hour: '15:00 hs',
-//     photo: 'FOTO',
-//     info: `aca va toda la infomacion asociada con el paciente, tambien se le podria poner una descripcion
-//      del por que pide el turno.`
-//   }, {
-//     name: 'Santiago Rudolf',
-//     day: '20/11/2019',
-//     hour: '14:30 hs',
-//     photo: 'FOTO',
-//     info: `aca va toda la infomacion asociada con el paciente, tambien se le podria poner una descripcion
-//      del por que pide el turno.`
-//   },
-// ];
 @Component({
   selector: 'app-appointment-table',
   templateUrl: './appointment-table.component.html',
@@ -66,10 +36,8 @@ export class AppointmentTableComponent implements OnInit {
    getAppointments () {
     this.service.getAppointments().subscribe(
       data => {
-       debugger
        data.forEach(element => {
         ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName, element.date));
-        console.log(ELEMENT_DATA);
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
        console.log(ELEMENT_DATA);

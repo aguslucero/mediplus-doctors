@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
+import { AppointmentService} from '../../services/appointment.service';
 
 
 export interface AppointmentInfo {
@@ -59,10 +60,22 @@ export class AppointmentTableComponent  {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   columnsToDisplay = ['name', 'day', 'hour', 'options'];
   expandedElement: AppointmentInfo | null;
+  data: any;
+
+  constructor (private service: AppointmentService) { }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+   }
+
+   anda() {
+    this.service.getAll().subscribe(
+      data => {
+        this.data = data;
+        console.log(data);
+      }
+    );
+   }
 }
 
 

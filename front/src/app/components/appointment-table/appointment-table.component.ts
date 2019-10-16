@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import { AppointmentService} from '../../services/appointment.service';
@@ -56,13 +56,17 @@ const ELEMENT_DATA: AppointmentInfo[] = [
   ],
 })
 
-export class AppointmentTableComponent  {
+export class AppointmentTableComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   columnsToDisplay = ['name', 'day', 'hour', 'options'];
   expandedElement: AppointmentInfo | null;
   data: any;
 
   constructor (private service: AppointmentService) { }
+
+  ngOnInit() {
+
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

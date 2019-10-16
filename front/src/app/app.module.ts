@@ -27,6 +27,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DiaryHeaderComponent } from './components/diary-header/diary-header.component';
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { FormsModule } from '@angular/forms';
+import { AppointmentService } from './services/appointment.service';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { FormsModule } from '@angular/forms';
     })
 
   ],
-  providers: [],
+  providers: [AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

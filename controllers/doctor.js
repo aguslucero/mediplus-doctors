@@ -8,8 +8,8 @@ const https = require('https');
 const api_helper = require('./api_helper')
 
 
-router.get('/appointments',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/5da7756ee4d594146bf56595')
+router.get('/PendingAppointments',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/5da7756ee4d594146bf56595')
     .then(response => {
         res.json(response)
     })
@@ -18,7 +18,15 @@ router.get('/appointments',(req,res) => {
     });
 });
 
-
+router.get('/ApprovedAppointments',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/approved/5da7756ee4d594146bf56595')
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
 
 
 module.exports = router;

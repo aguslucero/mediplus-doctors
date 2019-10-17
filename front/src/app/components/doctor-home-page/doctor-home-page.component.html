@@ -6,6 +6,8 @@
       <span (click)="GoToScheduleView()" class="button-content"> Gestionar Horarios </span>
     </div>
     <div class="home-button">
-      <span (click)="GoToPendingAppointment()"  class="button-content"  matBadge="4"> Turnos Pendientes </span>
+      <span (click)="GoToPendingAppointment()"  class="button-content"> Turnos Pendientes
+         <span class="badge" *ngIf="pending > 0">{{pending}}</span>
+      </span>
     </div>
   </div>

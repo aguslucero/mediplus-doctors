@@ -26,15 +26,15 @@ export class AppointmentTableComponent implements OnInit {
   AppointmentInfo: AppointmentInfo ;
   constructor (private service: AppointmentService) { }
   ngOnInit() {
-   this.getAppointments();
+   this.getPendingAppointments();
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
    }
 
-   getAppointments () {
-    this.service.getAppointments().subscribe(
+   getPendingAppointments () {
+    this.service.getPendingAppointments().subscribe(
       data => {
        data.forEach(element => {
         ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName, element.date));
@@ -45,14 +45,7 @@ export class AppointmentTableComponent implements OnInit {
     }
 
 
-   anda() {
-    this.service.getAppointments().subscribe(
-      data => {
-        this.AppointmentInfo = data;
-        console.log(data);
-      }
-    );
-   }
+
 }
 
 

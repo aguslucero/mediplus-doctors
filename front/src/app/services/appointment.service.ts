@@ -7,8 +7,12 @@ export class AppointmentService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAppointments( ): Observable<any> {
-    return this.httpClient.get('/doctors/appointments');
+  getPendingAppointments( ): Observable<any> {
+    return this.httpClient.get('/doctors/PendingAppointments');
+  }
+
+  getApprovedAppointments( ): Observable<any> {
+    return this.httpClient.get('/doctors/ApprovedAppointments');
   }
 
 }

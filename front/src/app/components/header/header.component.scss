@@ -20,4 +20,22 @@
 
 };
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.badge-header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 12px;
+  line-height: 10px;
+  border-radius: 50%;
+  width: 19px;
+  height: 17px;
+  background-color: #ff0000;
+  border: 4px solid #ff0000;
+  color: #ffffff;
+  text-align: center;
+}
 

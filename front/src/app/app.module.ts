@@ -32,7 +32,8 @@ import { NextAppointmentModalComponent } from './components/next-appointment-mod
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SnackbarComponent } from './components/snackbar/snackbar.component'
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import {MatIconModule, MatToolbarModule} from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,9 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component'
     }),
     MatDialogModule,
     MatDatepickerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatToolbarModule
 
   ],
   providers: [AppointmentService],

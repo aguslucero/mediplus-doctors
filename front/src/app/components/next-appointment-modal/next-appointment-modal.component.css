@@ -63,4 +63,6 @@ tr.example-element-row:not(.example-expanded-row):active {
   width: 100%;
 }
 
-
+.title {
+  text-align: center;
+}

@@ -4,8 +4,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import { AppointmentService} from '../../services/appointment.service';
 import { element } from '@angular/core/src/render3/instructions';
 import { AppointmentInfo } from '../../models/appointmentInfo';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
- const ELEMENT_DATA: AppointmentInfo[] = [ ] ;
+ let ELEMENT_DATA: AppointmentInfo[] = [ ] ;
 @Component({
   selector: 'app-appointment-table',
   templateUrl: './appointment-table.component.html',
@@ -24,7 +26,10 @@ export class AppointmentTableComponent implements OnInit {
   columnsToDisplay = ['name', 'day', 'hour', 'options'];
   expandedElement: AppointmentInfo | null;
   AppointmentInfo: AppointmentInfo ;
-  constructor (private service: AppointmentService) { }
+  durationInSeconds = 3;
+  constructor (private service: AppointmentService,
+               private snackBar: MatSnackBar) { }
+
   ngOnInit() {
    this.getPendingAppointments();
   }
@@ -34,19 +39,53 @@ export class AppointmentTableComponent implements OnInit {
    }
 
    getPendingAppointments () {
+     ELEMENT_DATA = [];
     this.service.getPendingAppointments().subscribe(
       data => {
        data.forEach(element => {
-        ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName, element.date));
+         console.log(element);
+        ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
+                         element.date, element.hour, element._id ));
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
        console.log(ELEMENT_DATA);
       });
     }
 
+    aproveAppointment(appointmentId: string) {
+     this.service.approveAppointment(appointmentId).subscribe(
+      data => {
+        if ( data.success = true) {
+          this.openSnackBar('Turno aceptado correctamente!');
+          this.getPendingAppointments();
+        }
+        console.log(data);
+      });
+    }
+
+    rejectAppointment(appointmentId: string) {
+      this.service.rejectAppointment(appointmentId).subscribe(
+        data => {
+          if ( data.success = true) {
+            this.openSnackBar('El turno ha sido rechazado');
+            this.getPendingAppointments();
+          }
+          console.log(data);
+        });
+      }
 
 
-}
+    openSnackBar( action: string) {
+      this.snackBar.openFromComponent( SnackbarComponent, {
+        duration: this.durationInSeconds * 1000,
+        data: action,
+      });
+    }
+
+  }
+
+
+
 
 
 

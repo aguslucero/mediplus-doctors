@@ -7,6 +7,8 @@ import * as DoctorViewActions from '../../containers/actions/doctor-view-status.
 import * as DoctorsFilteresActions from '../../containers/actions/doctors-filtered.actions';
 import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { NextAppointmentModalComponent } from '../next-appointment-modal/next-appointment-modal.component';
 
 @Component({
   selector: 'app-diary',
@@ -22,10 +24,19 @@ export class DiaryComponent  {
 
   events: CalendarEvent[] = [];
 
-  constructor(private DoctorViewStore: Store<fromDoctorViewState.State>) { }
+  constructor(private DoctorViewStore: Store<fromDoctorViewState.State>,
+              public dialog: MatDialog) { }
 
   goToHome = () => {
     this.DoctorViewStore.dispatch(new DoctorViewActions.Home);
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NextAppointmentModalComponent, {
+      width: '60%',
+      autoFocus: false,
+      maxHeight: '90vh'
+    });
+ }
 
 }

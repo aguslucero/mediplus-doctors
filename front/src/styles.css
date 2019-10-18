@@ -1,3 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css' ;
 @import '../node_modules/angular-calendar/css/angular-calendar.css' ;
+
+.snackbar {
+  margin:auto;
+  text-align: center;
+  margin-bottom: 25%;
+}
+.mat-snack-bar-container {
+  margin-bottom: 100% !important
+}

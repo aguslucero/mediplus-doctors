@@ -15,4 +15,12 @@ export class AppointmentService {
     return this.httpClient.get('/doctors/ApprovedAppointments');
   }
 
+  approveAppointment( id: string ): Observable<any> {
+    return this.httpClient.post('/doctors/ApproveAppointment/' + id, {});
+  }
+
+  rejectAppointment( id: string ): Observable<any> {
+    return this.httpClient.post('/doctors/rejectAppointment/' + id, {});
+  }
+
 }

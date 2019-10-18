@@ -1,4 +1,5 @@
 export class AppointmentInfo {
+private id: string;
  private name: string;
  private lastName: string;
  private day: string;
@@ -8,11 +9,12 @@ export class AppointmentInfo {
 
 
 
-constructor(name: string, lastName: string, day: string) {
+constructor(name: string, lastName: string, day: string, hour: string, id: string) {
+  this.id = id;
   this.name = name;
   this.lastName = lastName;
   this.day = day;
-  this.hour = '14:30';
+  this.hour = hour;
   this.photo = 'FOTO';
   this.info = 'aca va toda la infomacion relacionada con el paciente';
 }

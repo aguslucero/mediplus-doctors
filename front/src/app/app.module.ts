@@ -28,8 +28,11 @@ import { DiaryHeaderComponent } from './components/diary-header/diary-header.com
 import { SchedulePageComponent } from './components/schedule-page/schedule-page.component';
 import { FormsModule } from '@angular/forms';
 import { AppointmentService } from './services/appointment.service';
-
-
+import { NextAppointmentModalComponent } from './components/next-appointment-modal/next-appointment-modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './components/snackbar/snackbar.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,9 @@ import { AppointmentService } from './services/appointment.service';
     PendingAppointmentComponent,
     AppointmentTableComponent,
     DiaryHeaderComponent,
-    SchedulePageComponent
+    SchedulePageComponent,
+    NextAppointmentModalComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -61,10 +66,14 @@ import { AppointmentService } from './services/appointment.service';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    MatDialogModule,
+    MatDatepickerModule,
+    MatSnackBarModule
 
   ],
   providers: [AppointmentService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NextAppointmentModalComponent, SnackbarComponent]
 })
 export class AppModule { }

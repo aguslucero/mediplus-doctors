@@ -5,7 +5,8 @@ const appointmentsList = require('../models/appointments');
 const PersonModel = require('../models/person');
 const http = require('http');
 const https = require('https');
-const api_helper = require('./api_helper')
+const api_helper = require('./api_helper');
+const axios = require('axios');
 
 
 router.get('/PendingAppointments',(req,res) => {
@@ -27,6 +28,28 @@ router.get('/ApprovedAppointments',(req,res) => {
         res.send(error)
     });
 });
+
+router.post('/ApproveAppointment/:id',(req,res) => {
+    axios.post('http://localhost:3001/vr/api/appointment/approve/' + req.params.id)
+    .then(response => {
+        res.json({success: true})
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
+
+
+router.post('/rejectAppointment/:id',(req,res) => {
+    axios.post('http://localhost:3001/vr/api/appointment/reject/' + req.params.id)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
+
 
 
 module.exports = router;

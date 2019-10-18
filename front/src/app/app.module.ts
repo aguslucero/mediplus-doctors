@@ -33,7 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import {MatIconModule, MatToolbarModule} from '@angular/material';
+import {MatIconModule, MatToolbarModule, MatBottomSheetModule, MatListModule} from '@angular/material';
+import { NotificationsMenuComponent } from './components/notifications-menu/notifications-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import {MatIconModule, MatToolbarModule} from '@angular/material';
     DiaryHeaderComponent,
     SchedulePageComponent,
     NextAppointmentModalComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    NotificationsMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -72,11 +74,13 @@ import {MatIconModule, MatToolbarModule} from '@angular/material';
     MatDatepickerModule,
     MatSnackBarModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatBottomSheetModule,
+    MatListModule
 
   ],
   providers: [AppointmentService],
   bootstrap: [AppComponent],
-  entryComponents: [NextAppointmentModalComponent, SnackbarComponent]
+  entryComponents: [NextAppointmentModalComponent, SnackbarComponent, NotificationsMenuComponent ]
 })
 export class AppModule { }

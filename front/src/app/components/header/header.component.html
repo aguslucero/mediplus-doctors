@@ -29,9 +29,9 @@
               <div *ngIf="true" class="col-lg-12 pr-0">
                   <ul class="nav navbar-nav center_nav pull-right">
                       <li class="nav-item ">
-                          <button mat-icon-button>
+                          <button mat-icon-button (click)="openBottomSheet()">
                               <mat-icon class="icon">notifications</mat-icon>
-                              <span class="badge-header" >11</span>
+                              <span class="badge-header" *ngIf="pending > 0">{{pending}}</span>
                             </button>
                       </li>
                     <li class="nav-item ">

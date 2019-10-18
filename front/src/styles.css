@@ -10,3 +10,14 @@
 .mat-snack-bar-container {
   margin-bottom: 100% !important
 }
+
+
+.mat-bottom-sheet-container {
+  margin-bottom: 10% ;
+  margin-left:50%;
+  transform: translateY(-80%) !important;
+  max-height: 300px !important;
+  min-height: 300px !important;
+  background-color: #E1E1E1;
+ }
+

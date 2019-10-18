@@ -1,0 +1,11 @@
+<h5 class="title"> Notificaciones </h5>
+<div *ngFor="let notification of data"  >
+<mat-nav-list class="notifications-menu">
+    <a mat-list-item (click)="GoToPendingAppointment()">
+      <span mat-line>Nueva solicitud de turno</span>
+      <span mat-line>{{notification.name}} {{ notification.lastName}} {{ notification.day}}   {{notification.hour}}hs </span>
+    </a>
+</mat-nav-list>
+
+</div>
+

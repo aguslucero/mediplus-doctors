@@ -18,6 +18,7 @@ export class PendingAppointmentComponent implements OnInit {
   constructor(private DoctorViewStore: Store<fromDoctorViewState.State>) { }
 
   ngOnInit() {
+
   }
 
   goToHome = () => {

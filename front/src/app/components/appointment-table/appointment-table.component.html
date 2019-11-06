@@ -54,3 +54,12 @@
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
 
+<div class="spinner" *ngIf=this.loading>
+  <mat-progress-spinner
+          color="primary"
+          mode="indeterminate"
+          value=100 >
+      </mat-progress-spinner>
+    </div>
+
+

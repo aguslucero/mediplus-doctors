@@ -34,6 +34,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import {MatIconModule, MatToolbarModule, MatBottomSheetModule, MatListModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotificationsMenuComponent } from './components/notifications-menu/notifications-menu.component';
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { NotificationsMenuComponent } from './components/notifications-menu/noti
     MatIconModule,
     MatToolbarModule,
     MatBottomSheetModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [AppointmentService],

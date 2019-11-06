@@ -27,11 +27,13 @@ export class AppointmentTableComponent implements OnInit {
   expandedElement: AppointmentInfo | null;
   AppointmentInfo: AppointmentInfo ;
   durationInSeconds = 3;
+  loading = true;
   constructor (private service: AppointmentService,
                private snackBar: MatSnackBar) { }
 
   ngOnInit() {
    this.getPendingAppointments();
+
   }
 
   applyFilter(filterValue: string) {
@@ -48,6 +50,7 @@ export class AppointmentTableComponent implements OnInit {
                          element.date, element.hour, element._id ));
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+       this.loading = false;
        console.log(ELEMENT_DATA);
       });
     }

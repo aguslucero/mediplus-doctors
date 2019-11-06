@@ -14,7 +14,6 @@ import * as fromDoctorViewState from '../../containers/reducers/index';
 })
 export class NotificationsMenuComponent  {
 
-    notifications: AppointmentInfo[] = [ ] ;
 
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
               private notificationMenu: MatBottomSheetRef<NotificationsMenuComponent >,

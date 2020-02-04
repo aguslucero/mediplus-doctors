@@ -13,7 +13,7 @@
 
 
 .mat-bottom-sheet-container {
-  margin-bottom: 10% ;
+  margin-bottom: 50% ;
   margin-left:50%;
   transform: translateY(-80%) !important;
   max-height: 300px !important;

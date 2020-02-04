@@ -14,19 +14,8 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<div class="row ml-0 w-100">
-              <!-- se muestra al no estar logeado -->
-							<div *ngIf="false" class="col-lg-12 pr-0">
-								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item active">
-										<a class="nav-link" href="">Iniciar sesión</a>
-									</li>
-									<li class="nav-item ">
-										<a class="nav-link"  href="">Registrarse</a>
-									</li>
-								</ul>
-              </div>
-              <!-- se muestra al estar logueado -->
-              <div *ngIf="true" class="col-lg-12 pr-0">
+
+              <div  class="col-lg-12 pr-0">
                   <ul class="nav navbar-nav center_nav pull-right">
                       <li class="nav-item ">
                           <button mat-icon-button (click)="openBottomSheet()">
@@ -34,9 +23,13 @@
                               <span class="badge-header" *ngIf="pending > 0">{{pending}}</span>
                             </button>
                       </li>
-                    <li class="nav-item ">
-                      <a class="nav-link" >Ivan Rudolf</a>
-                    </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" mat-button [matMenuTriggerFor]="user">ivan rudolf</a>
+                            <mat-menu #user="matMenu">
+                             <button mat-menu-item routerLink="/singUpPaciente">mi perfil</button>
+                             <button mat-menu-item routerLink="/singUpEspecialista">cerrar sesión</button>
+                            </mat-menu>
+                      </li>
                   </ul>
                 </div>
 						</div>

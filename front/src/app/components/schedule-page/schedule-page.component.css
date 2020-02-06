@@ -1,0 +1,32 @@
+.schedule-container{
+  text-align: center;
+  padding-top: 5%;
+}
+
+.mat-form-field{
+  max-width: 13%
+}
+
+.inp{
+  max-width: 2%;
+}
+
+.day{
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+}
+
+.button{
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  margin-left: 2%;
+
+}
+
+.days{
+  display: space-around;
+}
+
+

@@ -8,6 +8,16 @@ const https = require('https');
 const api_helper = require('./api_helper');
 const axios = require('axios');
 
+router.get('/CurrentUser',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/5d9e52e0989cd5247a8079d2')
+    .then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
+
 
 router.get('/PendingAppointments',(req,res) => {
     api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/5da7756ee4d594146bf56595')
@@ -49,6 +59,8 @@ router.post('/rejectAppointment/:id',(req,res) => {
         res.send(error)
     });
 });
+
+
 
 
 

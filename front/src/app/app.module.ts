@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { CommonModule } from '@angular/common'
 
 import { AppComponent } from './app.component';
 
@@ -39,6 +40,8 @@ import { NotificationsMenuComponent } from './components/notifications-menu/noti
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { LogInComponent } from './components/log-in/log-in.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +87,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
     MatListModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule
 
   ],
   providers: [AppointmentService],

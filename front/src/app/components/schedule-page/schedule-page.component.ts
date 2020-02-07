@@ -1,6 +1,7 @@
 import { WorkableDay } from './../../models/workableDay';
 import { Component, OnInit } from '@angular/core';
 import {DoctorService} from '../../services/doctorService/doctor.service';
+import { element } from 'protractor';
 
 
 
@@ -28,9 +29,7 @@ export class SchedulePageComponent implements OnInit {
     this.getWorkabledays();
   }
 
-  createWorcableDay(day: number) {
-    console.log(this.workabledays[day]);
-  }
+
 
  getWorkabledays () {
    this.workabledays = [];
@@ -50,8 +49,30 @@ export class SchedulePageComponent implements OnInit {
 
         );
      });
+     this.week.forEach(element => {
+       if (!this.workabledays[element.number]) {
+    const day = new WorkableDay (element.name, element.number, null, null, null, null , null );
+    this.workabledays[element.number] = day;
+       }
+     });
     console.log(this.workabledays);
    }
+
+   createOrUpdateWorcableDay(number: number) {
+    const day = this.workabledays[number];
+    this.doctorService.CreateWorkableDay(number, day.startHour, day.finishHour, day.breakFinish, day.breakStart).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => console.log(err)
+    );
+    console.log(this.workabledays);
+  }
+
+
+
  }
+
+
 
 

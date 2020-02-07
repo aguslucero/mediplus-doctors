@@ -1,4 +1,4 @@
-export class WorkableDay{
+export class WorkableDay {
   name: String;
   private  number: Number;
   private startHour: Number;
@@ -10,8 +10,8 @@ export class WorkableDay{
 
 
 
-  constructor(name: String, number: Number, startHour: Number,  finishHour: Number, breakStart: Number, breakFinish: Number, maxAppointments: Number
-) {
+  constructor(name: String, number: Number, startHour: Number,  finishHour: Number, breakStart:
+     Number, breakFinish: Number, maxAppointments: Number) {
   this.name = name;
   this.number = number;
   this.startHour = startHour;

@@ -18,6 +18,28 @@ router.get('/CurrentUser',(req,res) => {
     });
 });
 
+router.post('/CreateWorkableDay', (req,res) => {
+  axios.post('http://localhost:3001/vr/api/doctor/work/5d9e52e0989cd5247a8079d2',{ "workableDay": {
+        "name": "nombre",
+        "number": req.body.workableDay.number,
+        "startHour":  req.body.workableDay.startHour,
+        "finishHour":  req.body.workableDay.finishHour,
+        "breakStart":  req.body.workableDay.breakStart,
+        "breakFinish":  req.body.workableDay.breakFinish,
+        "maxAppointments":  req.body.workableDay.maxAppointments
+    }})
+    .then(response => {
+        res.json(response)
+        console.log(response);
+    })
+    .catch(error => {
+        res.send(error)
+    });
+   
+
+
+})
+
 
 router.get('/PendingAppointments',(req,res) => {
     api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/5da7756ee4d594146bf56595')
@@ -59,6 +81,9 @@ router.post('/rejectAppointment/:id',(req,res) => {
         res.send(error)
     });
 });
+
+
+
 
 
 

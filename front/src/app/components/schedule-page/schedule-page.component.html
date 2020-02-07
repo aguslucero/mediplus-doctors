@@ -1,61 +1,35 @@
 <div class="schedule-container">
+ <div *ngFor="let day of week" class="days">
 
-
-    <div *ngFor="let day of week" class="days">
-
-    <div *ngIf="workabledays[day.number]">
-      <!-- <form #schedule = "ngForm" (ngSubmit) = "onClickSubmit(schedule.value)" class="form"> -->
+      <form #schedule = "ngForm" (ngSubmit) = "createOrUpdateWorcableDay(day.number)" class="form">
     <a class="day">{{day.name}}:</a>
     <mat-form-field appearance="outline">
       <mat-label>Hora inicio</mat-label>
-      <input matInput placeholder="Hora inicio"  [ngModel]="workabledays[day.number].startHour">
+      <input type="number" max="24" matInput placeholder="Hora inicio"  [(ngModel)]="workabledays[day.number].startHour " [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Hora fin</mat-label>
-      <input matInput placeholder="Hora fin" [ngModel]="workabledays[day.number].finishHour">
+      <input type="number" matInput placeholder="Hora fin" [(ngModel)]="workabledays[day.number].finishHour" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Inicio descanso</mat-label>
-      <input matInput placeholder="Inicio descanso" [ngModel]="workabledays[day.number].breakStart">
+      <input type="number" matInput placeholder="Inicio descanso" [(ngModel)]="workabledays[day.number].breakStart" [ngModelOptions]="{standalone: true}" >
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Fin descanso</mat-label>
-      <input matInput placeholder="Fin descanso" [ngModel]="workabledays[day.number].breakFinish">
+      <input type="number" matInput placeholder="Fin descanso" [(ngModel)]="workabledays[day.number].breakFinish" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
-    <button  class="button" mat-raised-button (click)="createWorcableDay(day.number)">Editar</button>
+    <button  class="button" mat-raised-button type="submit">guardar</button>
+      </form>
 
   </div>
 
-  <div *ngIf="!workabledays[day.number]">
-
-    <a class="day">{{day.name}}:</a>
-    <mat-form-field appearance="outline">
-      <mat-label>Hora inicio</mat-label>
-      <input matInput placeholder="Hora inicio" >
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Hora fin</mat-label>
-      <input matInput placeholder="Hora fin" value="">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Inicio descanso</mat-label>
-      <input matInput placeholder="Inicio descanso" [ngModel]="">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Fin descanso</mat-label>
-      <input matInput placeholder="Fin descanso" value="">
-    </mat-form-field>
-
-    <button type="submit" class="button" mat-raised-button>Guardar</button>
   </div>
-</div>
+
 
 
 

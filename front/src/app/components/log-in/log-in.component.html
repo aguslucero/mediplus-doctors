@@ -14,27 +14,28 @@
 
         <div class="wrap-input100 validate-input" data-validate = "Ingrese un Email valido: ejemplo@abc.xyz">
           <span class="label-input100">Email</span>
-          <input class="input100" type="text" name="email" placeholder="Email...">
+          <input class="input100" type="text" name="email" [(ngModel)]="user.email" placeholder="Email...">
           <span class="focus-input100"></span>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate = "Campo obligatorio">
           <span class="label-input100">Contraseña</span>
-          <input class="input100" type="password" name="pass" placeholder="*************">
+          <input class="input100" type="password" name="pass" [(ngModel)]="user.password" placeholder="*************">
           <span class="focus-input100"></span>
         </div>
 
         <div class="container-login100-form-btn">
           <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
-            <button class="login100-form-btn">
+            <button class="login100-form-btn" (click)="login()">
               Iniciar sesión
             </button>
+
           </div>
           <div class="container-login100-form-btn link">
 
-              <span class="txt1">
+              <span class="txt1" (click)="getCurrentUser()">
                 ¿no tenes una cuenta?
                 <a  routerLink="/singUpPaciente" class="txt2 hov1">
                   registrate

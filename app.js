@@ -32,6 +32,9 @@ app.use('/appointments', appointments);
 
 const healthcare = require('./controllers/healthcare');
 app.use('/healthcare', healthcare);
+
+const auth = require('./controllers/auth');
+app.use('/auth', auth);
 // -------END CONTROLLERS-----------------
 
 

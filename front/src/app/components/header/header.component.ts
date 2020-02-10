@@ -8,6 +8,7 @@ import { Doctor } from '../../models/doctor';
 import { Store } from '@ngrx/store';
 import * as fromDoctorViewState from '../../containers/reducers/index';
 import * as DoctorViewActions from '../../containers/actions/doctor-view-status.actions';
+import {Router} from '@angular/router';
 
 
 
@@ -29,7 +30,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private notificationMenu: MatBottomSheet,
     private service: AppointmentService, private auth: AuthService,
-    private DoctorViewStore: Store<fromDoctorViewState.State>) { }
+    private DoctorViewStore: Store<fromDoctorViewState.State>,
+    private router: Router) { }
 
   openBottomSheet(): void {
     this.notificationMenu.open(NotificationsMenuComponent, {
@@ -70,8 +72,14 @@ export class HeaderComponent implements OnInit {
       }
     );
    }
-   GoToHome() {
+   goToHome() {
     this.DoctorViewStore.dispatch(new DoctorViewActions.Home);
+  }
+
+  logOut() {
+  localStorage.removeItem('token');
+  this.router.navigate(['']);
+
   }
 
 }

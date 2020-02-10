@@ -2,7 +2,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand"  (click)= GoToHome()>
+					<a class="navbar-brand"  (click)= goToHome()>
 						<img id="medipluslogo" src="../../../assets/img/logo.png" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -26,8 +26,8 @@
                       <li class="nav-item ">
                         <a class="nav-link" mat-button [matMenuTriggerFor]="user">{{currentUser.firstName}} {{currentUser.lastName}}</a>
                             <mat-menu #user="matMenu">
-                             <button mat-menu-item routerLink="/singUpPaciente">mi perfil</button>
-                             <button mat-menu-item routerLink="/singUpEspecialista">cerrar sesión</button>
+                             <button mat-menu-item >mi perfil</button>
+                             <button mat-menu-item (click)="logOut()">cerrar sesión</button>
                             </mat-menu>
                       </li>
                   </ul>

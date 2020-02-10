@@ -5,6 +5,9 @@ import { NotificationsMenuComponent } from '../notifications-menu/notifications-
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AppointmentInfo } from 'src/app/models/appointmentInfo';
 import { Doctor } from '../../models/doctor';
+import { Store } from '@ngrx/store';
+import * as fromDoctorViewState from '../../containers/reducers/index';
+import * as DoctorViewActions from '../../containers/actions/doctor-view-status.actions';
 
 
 
@@ -25,7 +28,8 @@ export class HeaderComponent implements OnInit {
   currentUser: Doctor;
 
   constructor(private notificationMenu: MatBottomSheet,
-    private service: AppointmentService, private auth: AuthService) { }
+    private service: AppointmentService, private auth: AuthService,
+    private DoctorViewStore: Store<fromDoctorViewState.State>) { }
 
   openBottomSheet(): void {
     this.notificationMenu.open(NotificationsMenuComponent, {
@@ -66,5 +70,8 @@ export class HeaderComponent implements OnInit {
       }
     );
    }
+   GoToHome() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.Home);
+  }
 
 }

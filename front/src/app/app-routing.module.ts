@@ -12,11 +12,11 @@ const routes: Routes = [
 
 {
   path: '',
-  component: DoctorPageComponent
+  component: LogInComponent
 },
 {
-  path: 'logIn',
-  component: LogInComponent
+  path: 'doctor',
+  component: DoctorPageComponent
 }
 ];
 

@@ -1,6 +1,6 @@
 import { WorkableDay } from './../../models/workableDay';
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class DoctorService {
   constructor(private httpClient: HttpClient) { }
 
   getCurrentUser( ): Observable<any> {
-    return this.httpClient.get('/doctors/CurrentUser');
+    return this.httpClient.get('/doctors/CurrentUser', {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
   }
 
   CreateWorkableDay( number: Number,  startHour: Number, finishHour: Number,
@@ -21,7 +21,7 @@ export class DoctorService {
     return this.httpClient.post('/doctors/CreateWorkableDay', {
      workableDay
 
-    });
+    }, {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
 
 
   }

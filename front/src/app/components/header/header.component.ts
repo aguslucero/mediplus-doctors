@@ -1,8 +1,15 @@
+import { AuthService } from './../../services/authService/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatBottomSheet } from '@angular/material';
 import { NotificationsMenuComponent } from '../notifications-menu/notifications-menu.component';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AppointmentInfo } from 'src/app/models/appointmentInfo';
+import { Doctor } from '../../models/doctor';
+
+
+
+
+
 
 @Component({
   selector: 'app-header',
@@ -15,9 +22,10 @@ export class HeaderComponent implements OnInit {
 
   pending: number;
   notifications: AppointmentInfo[] = [ ] ;
+  currentUser: Doctor;
 
   constructor(private notificationMenu: MatBottomSheet,
-    private service: AppointmentService) { }
+    private service: AppointmentService, private auth: AuthService) { }
 
   openBottomSheet(): void {
     this.notificationMenu.open(NotificationsMenuComponent, {
@@ -27,6 +35,7 @@ export class HeaderComponent implements OnInit {
       ) ;
   }
   ngOnInit() {
+  this.getCurrentUser();
   this.countPendingAppointment();
   this.getPendingAppointments ();
   }
@@ -43,12 +52,19 @@ export class HeaderComponent implements OnInit {
    this.service.getPendingAppointments().subscribe(
      data => {
       data.forEach(element => {
-        console.log(element);
        this.notifications.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
                         element.date, element.hour, element._id ));
       });
-      console.log(this.notifications);
      });
+   }
+
+   getCurrentUser() {
+     this.auth.currentUser().subscribe(
+      data => {
+        this.currentUser = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email);
+        console.log('currentUser', this.currentUser);
+      }
+    );
    }
 
 }

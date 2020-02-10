@@ -6,10 +6,11 @@ const PersonModel = require('../models/person');
 const http = require('http');
 const https = require('https');
 const api_helper = require('./api_helper')
+const verifyToken = require('./tokenValidator');
 
 
-router.get('/all',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/:5da7756ee4d594146bf56595')
+router.get('/all', verifyToken, (req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/'+req.userId)
     .then(response => {
         res.json(response)
     })

@@ -8,6 +8,7 @@ const https = require('https');
 const api_helper = require('./api_helper');
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
+const verifyToken = require('./tokenValidator');
 
 const SECRET_KEY = 'secretkey12345'
 
@@ -25,7 +26,7 @@ router.post('/login', (req,res) => {
       })
       .catch(error => {
           console.log(error);
-          res.send(error)
+          res.send(false)
       });
     });
 
@@ -41,16 +42,17 @@ router.post('/login', (req,res) => {
           });
         });
 
-        function verifyToken(req, res, next) {
-            const token = req.headers['authorization'];
-            if (!token) {
-                return res.status(401).send({ auth: false, message: 'No token provided' });
-            }
-            // Decode the Tokenreq.userId = decoded.id;
-            const decoded =  jwt.verify(token, SECRET_KEY);
-            req.userId = decoded._id;
-            next();
-        }
+// middleware
+        // function verifyToken(req, res, next) {
+        //     const token = req.headers['authorization'];
+        //     if (!token) {
+        //         return res.status(401).send({ auth: false, message: 'No token provided' });
+        //     }
+        //     // Decode the Tokenreq.userId = decoded.id;
+        //     const decoded =  jwt.verify(token, SECRET_KEY);
+        //     req.userId = decoded._id;
+        //     next();
+        // }
         
 
 

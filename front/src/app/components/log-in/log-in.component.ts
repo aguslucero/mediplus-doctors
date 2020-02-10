@@ -1,6 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from './../../services/authService/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import {Router} from '@angular/router';
 
 
 
@@ -13,7 +15,7 @@ export class LogInComponent implements OnInit {
   user = {email: '', password: '' };
 
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,7 +25,9 @@ export class LogInComponent implements OnInit {
     data => {
       console.log('respuesta', data);
       localStorage.setItem('token', data.token);
-
+      if (data) {
+        this.router.navigate(['doctor']);
+      }
     });
 
 }
@@ -33,10 +37,11 @@ getCurrentUser() {
   this.auth.currentUser().subscribe(
     (res) => {
       console.log('respuesta', res);
+      return (true);
     },
-    (err) => console.log(err)
-  );
-  console.log(this.user);
+    (err) =>  console.log(err)
+      );
+      return false;
 }
 
 

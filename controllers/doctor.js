@@ -7,9 +7,10 @@ const http = require('http');
 const https = require('https');
 const api_helper = require('./api_helper');
 const axios = require('axios');
+const verifyToken = require('./tokenValidator');
 
-router.get('/CurrentUser',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/5d9e52e0989cd5247a8079d2')
+router.get('/CurrentUser', verifyToken, (req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/doctor/'+ req.userId)
     .then(response => {
         res.json(response)
     })
@@ -18,8 +19,8 @@ router.get('/CurrentUser',(req,res) => {
     });
 });
 
-router.post('/CreateWorkableDay', (req,res) => {
-  axios.post('http://localhost:3001/vr/api/doctor/work/5d9e52e0989cd5247a8079d2',{ "workableDay": {
+router.post('/CreateWorkableDay', verifyToken,  (req,res) => {
+  axios.post('http://localhost:3001/vr/api/doctor/work/'+ req.userId,{ "workableDay": {
         "name": "nombre",
         "number": req.body.workableDay.number,
         "startHour":  req.body.workableDay.startHour,
@@ -41,8 +42,8 @@ router.post('/CreateWorkableDay', (req,res) => {
 })
 
 
-router.get('/PendingAppointments',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/5da7756ee4d594146bf56595')
+router.get('/PendingAppointments', verifyToken,(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/pending/'+ req.userId)
     .then(response => {
         res.json(response)
     })
@@ -51,8 +52,8 @@ router.get('/PendingAppointments',(req,res) => {
     });
 });
 
-router.get('/ApprovedAppointments',(req,res) => {
-    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/approved/5da7756ee4d594146bf56595')
+router.get('/ApprovedAppointments', verifyToken,(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/approved/'+ req.userId)
     .then(response => {
         res.json(response)
     })

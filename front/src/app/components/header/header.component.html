@@ -24,7 +24,7 @@
                             </button>
                       </li>
                       <li class="nav-item ">
-                        <a class="nav-link" mat-button [matMenuTriggerFor]="user">ivan rudolf</a>
+                        <a class="nav-link" mat-button [matMenuTriggerFor]="user">{{currentUser.firstName}} {{currentUser.lastName}}</a>
                             <mat-menu #user="matMenu">
                              <button mat-menu-item routerLink="/singUpPaciente">mi perfil</button>
                              <button mat-menu-item routerLink="/singUpEspecialista">cerrar sesión</button>

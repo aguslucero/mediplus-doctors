@@ -7,3 +7,9 @@
   max-width: 120px;
 
 };
+
+
+.alert {
+  text-align: center !important;
+  width: 30%;
+}

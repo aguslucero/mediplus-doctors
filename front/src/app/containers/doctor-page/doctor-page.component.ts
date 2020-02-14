@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, combineLatest } from 'rxjs';
+
 
 import * as fromDoctorView from '../reducers';
 import * as fromDoctorViewStatus from '../reducers/doctor-view-status.reducer';
@@ -17,7 +19,7 @@ export class DoctorPageComponent implements OnInit {
 
   doctorStatusView;
 
-  constructor(store: Store<fromDoctorView.State>) {
+  constructor(store: Store<fromDoctorView.State>, private router: Router) {
     this.DoctorViewStatus$ = store.pipe(select(fromDoctorView.getDoctorViewStatus));
 
     this.DoctorViewStatus$.subscribe(status => {
@@ -28,6 +30,9 @@ export class DoctorPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined' ) {
+      this.router.navigate(['login']);
+    }
   }
 
 }

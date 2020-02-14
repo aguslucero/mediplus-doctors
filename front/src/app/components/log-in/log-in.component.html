@@ -11,6 +11,11 @@
         <span class="login100-form-title p-b-59">
           Iniciar sesión
         </span>
+        <div *ngIf="showAlert" class="alert">
+          <div class="alert alert-danger" >
+               <strong>*Usuario o contraseña incorrectos</strong>
+          </div>
+      </div>
 
         <div class="wrap-input100 validate-input" data-validate = "Ingrese un Email valido: ejemplo@abc.xyz">
           <span class="label-input100">Email</span>

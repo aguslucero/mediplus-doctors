@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -13,12 +14,17 @@ import {Router} from '@angular/router';
 })
 export class LogInComponent implements OnInit {
   user = {email: '', password: '' };
+  showAlert: boolean;
 
 
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+  if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
+    this.router.navigate(['']);
   }
+    }
+
 
   login() {
    this.auth.logIn(this.user).subscribe(
@@ -26,8 +32,10 @@ export class LogInComponent implements OnInit {
       console.log('respuesta', data);
       localStorage.setItem('token', data.token);
       if (data) {
-        this.router.navigate(['doctor']);
+        this.router.navigate(['']);
       }
+      this.showAlert = true ;
+
     });
 
 }

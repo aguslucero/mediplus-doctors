@@ -25,7 +25,6 @@ router.post('/login', (req,res) => {
           
       })
       .catch(error => {
-          console.log(error);
           res.send(false)
       });
     });
@@ -34,8 +33,6 @@ router.post('/login', (req,res) => {
         api_helper.make_API_call('http://localhost:3001/vr/api/doctor/'+req.userId)
           .then(response => {
               res.json(response)
-              console.log("response", response);
-              console.log("res", res);
           })
           .catch(error => {
               res.send(error)

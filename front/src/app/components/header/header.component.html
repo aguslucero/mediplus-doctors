@@ -17,12 +17,18 @@
 
               <div  class="col-lg-12 pr-0">
                   <ul class="nav navbar-nav center_nav pull-right">
-                      <li class="nav-item ">
-                          <button mat-icon-button (click)="openBottomSheet()">
-                              <mat-icon class="icon">notifications</mat-icon>
-                              <span class="badge-header" *ngIf="pending > 0">{{pending}}</span>
-                            </button>
-                      </li>
+                    <li class="nav-item ">
+                      <button mat-icon-button  [matMenuTriggerFor]="notification">
+                        <mat-icon class="icon">notifications</mat-icon>
+                        <span class="badge-header" *ngIf="pending > 0">{{pending}}</span>
+                      </button>
+                          <mat-menu #notification="matMenu" class="notification">
+                            Notificaciones
+                          <button *ngIf="!pending > 0" > No tiene nuevas notificaciones</button>
+                         <button mat-menu-item *ngFor="let notification of notifications"  (click)="GoToPendingAppointment()"  class="newTurnbutton"> <p class="newTurnp">nuevo turno pendiente</p>
+                          <a>{{notification.name}} {{ notification.lastName}} {{ notification.day}}   {{notification.hour}}hs </a>   </button>
+                          </mat-menu>
+                    </li>
                       <li class="nav-item ">
                         <a class="nav-link" mat-button [matMenuTriggerFor]="user">{{currentUser.firstName}} {{currentUser.lastName}}</a>
                             <mat-menu #user="matMenu">

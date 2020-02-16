@@ -1,11 +1,11 @@
 export class AppointmentInfo {
-private id: string;
- private name: string;
- private lastName: string;
- private day: string;
- private hour: string;
- private photo: string;
- private info: string;
+ id: string;
+  name: string;
+  lastName: string;
+  day: string;
+  hour: string;
+  photo: string;
+  info: string;
 
 
 

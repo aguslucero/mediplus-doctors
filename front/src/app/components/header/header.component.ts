@@ -1,7 +1,6 @@
 import { AuthService } from './../../services/authService/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatBottomSheet } from '@angular/material';
-import { NotificationsMenuComponent } from '../notifications-menu/notifications-menu.component';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AppointmentInfo } from 'src/app/models/appointmentInfo';
 import { Doctor } from '../../models/doctor';
@@ -33,13 +32,6 @@ export class HeaderComponent implements OnInit {
     private DoctorViewStore: Store<fromDoctorViewState.State>,
     private router: Router) { }
 
-  openBottomSheet(): void {
-    this.notificationMenu.open(NotificationsMenuComponent, {
-      data: this.notifications
-     }
-
-      ) ;
-  }
   ngOnInit() {
   this.getCurrentUser();
   this.countPendingAppointment();
@@ -74,6 +66,10 @@ export class HeaderComponent implements OnInit {
    }
    goToHome() {
     this.DoctorViewStore.dispatch(new DoctorViewActions.Home);
+  }
+  GoToPendingAppointment() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.PendingAppointment);
+    this.notificationMenu.dismiss();
   }
 
   logOut() {

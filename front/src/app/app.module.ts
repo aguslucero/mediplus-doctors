@@ -36,7 +36,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import {MatIconModule, MatToolbarModule, MatBottomSheetModule, MatListModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { NotificationsMenuComponent } from './components/notifications-menu/notifications-menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -57,7 +56,6 @@ import { LogInComponent } from './components/log-in/log-in.component';
     SchedulePageComponent,
     NextAppointmentModalComponent,
     SnackbarComponent,
-    NotificationsMenuComponent,
     LogInComponent,
   ],
   imports: [
@@ -93,6 +91,6 @@ import { LogInComponent } from './components/log-in/log-in.component';
   ],
   providers: [AppointmentService],
   bootstrap: [AppComponent],
-  entryComponents: [NextAppointmentModalComponent, SnackbarComponent, NotificationsMenuComponent ]
+  entryComponents: [NextAppointmentModalComponent, SnackbarComponent ]
 })
 export class AppModule { }

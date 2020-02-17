@@ -71,6 +71,9 @@ export class HeaderComponent implements OnInit {
     this.DoctorViewStore.dispatch(new DoctorViewActions.PendingAppointment);
     this.notificationMenu.dismiss();
   }
+  goToProfile() {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.DoctorProfile);
+  }
 
   logOut() {
   localStorage.removeItem('token');

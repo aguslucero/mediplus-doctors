@@ -1,0 +1,73 @@
+<form class="profile-form">
+  <p>Informacion personal</p>
+  <div class="personal-data">
+    <mat-form-field class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre"  [(ngModel)]="user.firstName" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput placeholder="Apellido"  [(ngModel)]="user.lastName" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+  </div>
+  <div class="personal-data">
+    <!-- <mat-form-field class="full-width">
+      <mat-label>DNI</mat-label>
+      <input matInput placeholder="DNI"  [(ngModel)]="user.dni" [ngModelOptions]="{ standalone: true }"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Seleccione la fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Nacimiento"  [(ngModel)]="user.birthDate" [ngModelOptions]="{ standalone: true }">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+  </div>
+  <p>Informacion de contacto</p>
+  <div class="tel-data">
+    <!-- <mat-form-field class="full-width">
+      <mat-label>Nro de telefono</mat-label>
+      <span matPrefix>+54 &nbsp;</span>
+      <input type="tel" matInput placeholder="telefono" [(ngModel)]="user.phone" [ngModelOptions]="{ standalone: true }"/>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+    </mat-form-field> -->
+  </div>
+  <div class="adress-data">
+    <mat-form-field class="full-width">
+      <mat-label>Dirreccion:</mat-label>
+      <input matInput placeholder="Direccion:"/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Departamento:</mat-label>
+      <input matInput placeholder="Departamento"/>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="full-width">
+      <mat-label>Ciudad:</mat-label>
+      <input matInput placeholder="Ciudad"/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Provincia:</mat-label>
+      <input matInput placeholder="Provincia"/>
+    </mat-form-field>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Guardar informacion</button>
+  </div>
+</form>
+<form class="doctor-data">
+    <p>Seleccione las obras sociales con la que trabaja</p>
+    <div class="healt-care">
+      <mat-form-field>
+        <mat-label>Obra social</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let healtCare of healtCares" [value]="healtCare.name">
+            {{healtCare.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="saveHealtCare()">Guardar obra social</button>
+    </div>
+</form>

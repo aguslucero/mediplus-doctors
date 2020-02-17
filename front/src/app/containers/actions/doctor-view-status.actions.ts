@@ -4,7 +4,8 @@ export enum DoctorViewActionTypes {
     Home = '[DoctorViewShown] Home',
     DiaryView = '[DiaryView] DiaryView',
     ScheduleView = '[ScheduleView] ScheduleView',
-    PendingAppointment = '[PendingAppointment] PendingAppointment'
+    PendingAppointment = '[PendingAppointment] PendingAppointment',
+    DoctorProfile = '[DoctorPofile] DoctorProfile '
 }
 
 export class Home implements Action {
@@ -31,8 +32,15 @@ export class PendingAppointment implements Action {
 
   constructor() { }
 }
+export class DoctorProfile implements Action {
+  readonly type = DoctorViewActionTypes.DoctorProfile;
+
+  constructor() { }
+}
+
 export type DoctorViewActionsUnion =
   | Home
   | DiaryView
   | ScheduleView
-  | PendingAppointment;
+  | PendingAppointment
+  | DoctorProfile;

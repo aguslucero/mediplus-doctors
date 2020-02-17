@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 
@@ -39,6 +39,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
     NextAppointmentModalComponent,
     SnackbarComponent,
     LogInComponent,
+    DoctorProfileComponent,
   ],
   imports: [
     BrowserModule,

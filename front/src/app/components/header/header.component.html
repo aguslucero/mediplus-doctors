@@ -32,7 +32,7 @@
                       <li class="nav-item ">
                         <a class="nav-link" mat-button [matMenuTriggerFor]="user">{{currentUser.firstName}} {{currentUser.lastName}}</a>
                             <mat-menu #user="matMenu">
-                             <button mat-menu-item >mi perfil</button>
+                             <button mat-menu-item (click)="goToProfile()">mi perfil</button>
                              <button mat-menu-item (click)="logOut()">cerrar sesión</button>
                             </mat-menu>
                       </li>

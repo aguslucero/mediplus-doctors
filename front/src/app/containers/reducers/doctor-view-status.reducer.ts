@@ -5,13 +5,15 @@ export interface State {
   isDiaryView: boolean;
   isScheduleView: boolean;
   isPendingAppointment: boolean;
+  isDoctorProfile: boolean;
 }
 
 const initialState = {
   isHomeView: true,
   isDiaryView: false,
   isScheduleView: false,
-  isPendingAppointment: false
+  isPendingAppointment: false,
+  isDoctorProfile: false,
 };
 
 type ActionsType =
@@ -25,7 +27,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: true,
         isScheduleView: false,
         isDiaryView: false,
-        isPendingAppointment: false
+        isPendingAppointment: false,
+        isDoctorProfile: false,
       };
     }
     case DoctorViewActionTypes.DiaryView: {
@@ -34,7 +37,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isScheduleView: false,
         isDiaryView: true,
-        isPendingAppointment: false
+        isPendingAppointment: false,
+        isDoctorProfile: false,
       };
     }
     case DoctorViewActionTypes.ScheduleView: {
@@ -43,7 +47,8 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isScheduleView: true,
         isDiaryView: false,
-        isPendingAppointment: false
+        isPendingAppointment: false,
+        isDoctorProfile: false,
       };
     }
     case DoctorViewActionTypes.PendingAppointment: {
@@ -52,7 +57,18 @@ export function reducer( state = initialState, action: ActionsType): State {
         isHomeView: false,
         isScheduleView: false,
         isDiaryView: false,
-        isPendingAppointment: true
+        isPendingAppointment: true,
+        isDoctorProfile: false,
+      };
+    }
+    case DoctorViewActionTypes.DoctorProfile: {
+      return {
+        ...state,
+        isHomeView: false,
+        isScheduleView: false,
+        isDiaryView: false,
+        isPendingAppointment: false,
+        isDoctorProfile: true,
       };
     }
     default: {

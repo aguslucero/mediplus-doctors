@@ -20,10 +20,13 @@ export class DoctorProfileComponent implements OnInit {
               private health: HealthCareService,
               private doctorService: DoctorService) {
   }
+  clinics:  Clinics[] ;
+  clinicSelected: Clinics;
 
   ngOnInit() {
     this.getCurrentUser();
     this.getAllHealthCares();
+    this.getAllClinics();
   }
 
   getCurrentUser() {
@@ -51,4 +54,27 @@ export class DoctorProfileComponent implements OnInit {
       });
     });
   }
+
+  getAllClinics() {
+    this.clinics = [];
+    this.doctorService.getAllClinics().subscribe(
+      (res: Clinics[]) => res.forEach(element => {
+        this.clinics.push(element) ;
+
+      })
+      );
+  }
+
+  clinicAdd() {
+    console.log(this.clinicSelected);
+    this.doctorService.clinicAdd(this.clinicSelected._id).subscribe(
+    (res) => console .log(res)
+    );
+  }
+}
+
+export class Clinics {
+_id: string;
+name: string;
+addres: string;
 }

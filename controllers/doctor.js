@@ -96,6 +96,37 @@ router.post('/prepaid/', verifyToken, (req,res) => {
     });
 });
 
+router.get('/clinics', (req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/clinic/all')
+    .then(
+        response => {
+            res.status(200).json(response)
+            
+        })
+        .catch(error =>{
+             res.send(error)
+        });
+        
+
+});
+
+router.post('/clinicAdd/:clinicId', verifyToken, (req,res) => {    
+    axios.post('http://localhost:3001/vr/api/clinic/add',  {
+    
+       "clinic": req.params.clinicId,
+      "doctor": req.userId
+      })
+      .then(response => {
+          res.json(response)
+          console.log(response);
+      })
+      .catch(error => {
+          res.send(error)
+      });
+  });
+
+
+
 
 
 

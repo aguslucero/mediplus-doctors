@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HealtCareService } from './healtCare.service';
+import { HealthCareService } from './healthCare.service';
 
 describe('AppointmentService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HealtCareService]
+      providers: [HealthCareService]
     });
   });
 
-  it('should be created', inject([HealtCareService], (service: HealtCareService) => {
+  it('should be created', inject([HealthCareService], (service: HealthCareService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -60,14 +60,18 @@
     <div class="healt-care">
       <mat-form-field>
         <mat-label>Obra social</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let healtCare of healtCares" [value]="healtCare.name">
-            {{healtCare.name}}
+        <mat-select  [(ngModel)]="selectedHealthCare" name="healthcare">
+          <mat-option *ngFor="let healthCare of healthCares" [value]="healthCare">
+            {{healthCare.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div>
-      <button mat-raised-button color="primary" (click)="saveHealtCare()">Guardar obra social</button>
+      <button mat-raised-button color="primary" (click)="saveHealthCare()">Guardar obra social</button>
+    </div>
+    <p style="padding-top: 15px;">Estas son las obras sociales ya añadidas</p>
+    <div *ngFor="let healthCare of user.prepaid">
+      <span>{{healthCare.name}}</span>
     </div>
 </form>

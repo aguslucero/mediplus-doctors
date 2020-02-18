@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const api_helper = require('./api_helper');
 const Healthcare = require('../models/healthcare');
 
 
 
 
 //GET HTTP method to /pacientes
-router.get('/',(req,res) => {
-    Healthcare.getAll((err, lists) => {
-        if (err) {
-            res.json({success: false, message: `Failed to load all lists. Error: ${err}`});
-        } else {
-            res.write(JSON.stringify({success: true, lists:lists},null,2));
-            res.end();
-        }
-    })
-});
+router.get('/allPrepaids',(req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/auth/allPrepaids')
+          .then(response => {
+              res.json(response)
+          })
+          .catch(error => {
+              res.send(error)
+          });
+        });
 
 //POST HTTP method to /pacientes
 

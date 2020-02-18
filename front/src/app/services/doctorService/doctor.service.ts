@@ -2,6 +2,7 @@ import { WorkableDay } from './../../models/workableDay';
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HealthCare } from 'src/app/models/healthCare';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class DoctorService {
     }, {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
 
 
+  }
+
+  assingHealthCare (prepaid: HealthCare) {
+    return this.httpClient.post('/doctors/prepaid/', {
+      prepaid
+    },
+    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
   }
 
 }

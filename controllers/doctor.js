@@ -83,6 +83,18 @@ router.post('/rejectAppointment/:id',(req,res) => {
     });
 });
 
+router.post('/prepaid/', verifyToken, (req,res) => {    
+  axios.post('http://localhost:3001/vr/api/doctor/prepaid/'+ req.userId,{ "prepaid": {
+    "name": req.body.prepaid.name
+    }})
+    .then(response => {
+        res.json(response)
+        console.log(response);
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
 
 
 

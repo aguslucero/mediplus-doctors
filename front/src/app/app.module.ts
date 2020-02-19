@@ -34,12 +34,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import {MatIconModule, MatToolbarModule, MatBottomSheetModule, MatListModule} from '@angular/material';
+import {MatIconModule, MatToolbarModule, MatBottomSheetModule, MatListModule } from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
+import { MatCheckboxModule, MatNativeDateModule } from '@angular/material';
 
 
 @NgModule({
@@ -88,10 +89,14 @@ import { DoctorProfileComponent } from './components/doctor-profile/doctor-profi
     MatProgressSpinnerModule,
     MatMenuModule,
     AppRoutingModule,
-    CommonModule
-
+    CommonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
   ],
-  providers: [AppointmentService],
+  providers: [AppointmentService,
+              MatDatepickerModule,
+            ],
   bootstrap: [AppComponent],
   entryComponents: [NextAppointmentModalComponent, SnackbarComponent ]
 })

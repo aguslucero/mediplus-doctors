@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HealthCare } from 'src/app/models/healthCare';
+import { Doctor } from 'src/app/models/doctor';
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +29,13 @@ export class DoctorService {
   }
 
   assingHealthCare (prepaid: HealthCare) {
-    return this.httpClient.post('/doctors/prepaid/', {
+    return this.httpClient.post('/doctors/prepaid', {
       prepaid
     },
     {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+  }
+  updateDoctor( doctor: Doctor) {
+    return this.httpClient.post('/doctors/update', {doctor}, {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
   }
 
 }

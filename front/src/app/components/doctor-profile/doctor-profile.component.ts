@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/models/doctor';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { HealthCareService} from 'src/app/services/healthCareService/healthCare.service';
-import { from } from 'rxjs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HealthCare } from 'src/app/models/healthCare';
 import { HealthCareResponse } from 'src/app/Responses/healthCare.response';
 import { DoctorService } from 'src/app/services/doctorService/doctor.service';
@@ -29,7 +29,11 @@ export class DoctorProfileComponent implements OnInit {
   getCurrentUser() {
     this.auth.currentUser().subscribe(
       data => {
-        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid);
+        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.person.phone, data.adress);
+        this.user.dni = data.person.dni;
+        this.user.birthDate = data.person.birthDate;
+        this.user.speciality = data.speciality;
+        this.user.profileUrl = data.profileURL;
       },
     );
   }
@@ -39,9 +43,14 @@ export class DoctorProfileComponent implements OnInit {
     this.doctorService.assingHealthCare(prepaid).subscribe(
       (res) => {
         console.log(res);
+        location.reload();
       },
       (err) => console.log(err)
     );
+  }
+  deleteHealthCare() {
+    console.log('Se eliminara la siguiente obra social: ' + this.deleteHealthCare);
+
   }
 
   getAllHealthCares() {
@@ -50,5 +59,16 @@ export class DoctorProfileComponent implements OnInit {
         this.healthCares.push(new HealthCare(healt._id, healt.name));
       });
     });
+  }
+
+  updateDoctorData() {
+    console.log(this.user);
+    this.doctorService.updateDoctor(this.user).subscribe(
+      (res) => {
+        console.log(res);
+        location.reload();
+      },
+      (err) => console.log(err)
+    );
   }
 }

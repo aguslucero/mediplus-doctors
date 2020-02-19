@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
    getCurrentUser() {
      this.auth.currentUser().subscribe(
       data => {
-        this.currentUser = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid);
+        this.currentUser = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.phone, data.adress);
         console.log('currentUser', this.currentUser);
       }
     );

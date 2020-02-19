@@ -11,7 +11,7 @@
     </mat-form-field>
   </div>
   <div class="personal-data">
-    <!-- <mat-form-field class="full-width">
+    <mat-form-field class="full-width">
       <mat-label>DNI</mat-label>
       <input matInput placeholder="DNI"  [(ngModel)]="user.dni" [ngModelOptions]="{ standalone: true }"/>
     </mat-form-field>
@@ -20,39 +20,29 @@
       <input matInput [matDatepicker]="picker" placeholder="Nacimiento"  [(ngModel)]="user.birthDate" [ngModelOptions]="{ standalone: true }">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field> -->
+    </mat-form-field>
   </div>
   <p>Informacion de contacto</p>
   <div class="tel-data">
-    <!-- <mat-form-field class="full-width">
+    <mat-form-field class="full-width">
       <mat-label>Nro de telefono</mat-label>
       <span matPrefix>+54 &nbsp;</span>
       <input type="tel" matInput placeholder="telefono" [(ngModel)]="user.phone" [ngModelOptions]="{ standalone: true }"/>
       <mat-icon matSuffix>mode_edit</mat-icon>
-    </mat-form-field> -->
+    </mat-form-field>
   </div>
   <div class="adress-data">
     <mat-form-field class="full-width">
       <mat-label>Dirreccion:</mat-label>
-      <input matInput placeholder="Direccion:"/>
+      <input matInput placeholder="Direccion:" [(ngModel)]="user.adress" [ngModelOptions]="{ standalone: true }"/>
     </mat-form-field>
     <mat-form-field class="full-width">
-      <mat-label>Departamento:</mat-label>
-      <input matInput placeholder="Departamento"/>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="full-width">
-      <mat-label>Ciudad:</mat-label>
-      <input matInput placeholder="Ciudad"/>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Provincia:</mat-label>
-      <input matInput placeholder="Provincia"/>
+      <mat-label>Ingrese URL de imagen:</mat-label>
+      <input matInput placeholder="Imagen URL:" [(ngModel)]="user.profileUrl" [ngModelOptions]="{ standalone: true }"/>
     </mat-form-field>
   </div>
   <div class="buttons">
-    <button mat-raised-button color="primary">Guardar informacion</button>
+    <button mat-raised-button color="primary" (click)='updateDoctorData()'>Guardar informacion</button>
   </div>
 </form>
 <form class="doctor-data">
@@ -73,5 +63,6 @@
     <p style="padding-top: 15px;">Estas son las obras sociales ya añadidas</p>
     <div *ngFor="let healthCare of user.prepaid">
       <span>{{healthCare.name}}</span>
+      <!-- <button (click)='deleteHealthCare()'>Borrar</button> -->
     </div>
 </form>

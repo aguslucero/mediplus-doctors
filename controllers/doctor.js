@@ -83,7 +83,7 @@ router.post('/rejectAppointment/:id',(req,res) => {
     });
 });
 
-router.post('/prepaid/', verifyToken, (req,res) => {    
+router.post('/prepaid', verifyToken, (req,res) => {    
   axios.post('http://localhost:3001/vr/api/doctor/prepaid/'+ req.userId,{ "prepaid": {
     "name": req.body.prepaid.name
     }})
@@ -97,8 +97,28 @@ router.post('/prepaid/', verifyToken, (req,res) => {
 });
 
 
-
-
+router.post('/update', verifyToken, (req,res) => {    
+    axios.post('http://localhost:3001/vr/api/doctor/update/' + req.userId,{ 'person': {
+        'firstName': req.body.doctor.name,
+        'lastName':  req.body.doctor.lastName,
+        'birthDate': req.body.doctor.birthDate,
+        'dni': req.body.doctor.dni,
+        'phone':  req.body.doctor.phone,      
+        }, 
+        'doctor': {
+            'speciality': req.body.doctor.speciality,
+            'adress': req.body.doctor.adress,
+            'profileUrl': req.body.doctor.profileUrl
+        }
+    })
+    .then(response => {
+        res.json(response)
+        console.log(response);
+    })
+    .catch(error => {
+        res.send(error)
+    });
+});
 
 
 

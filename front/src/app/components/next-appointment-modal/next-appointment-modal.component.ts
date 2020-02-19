@@ -51,7 +51,7 @@ export class NextAppointmentModalComponent implements OnInit {
       data => {
        data.forEach(element => {
         ELEMENT_DATA.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
-                           element.date, element.hour, element._id ));
+                           element.date, element.hour, element._id, element.observation ));
        });
        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
        console.log(ELEMENT_DATA);

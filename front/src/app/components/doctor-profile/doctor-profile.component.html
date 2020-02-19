@@ -65,4 +65,21 @@
       <span>{{healthCare.name}}</span>
       <!-- <button (click)='deleteHealthCare()'>Borrar</button> -->
     </div>
+
+    <p>usted trabaja para una clinica??</p>
+<div class="healt-care">
+  <mat-form-field>
+    <mat-label>Clinica</mat-label>
+    <mat-select  [(ngModel)]="clinicSelected"  name="clinic" [ngModelOptions]="{standalone: true}" >
+      <mat-option *ngFor="let clinic of clinics" [value]="clinic">
+        {{clinic.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="clinicAdd()">Agregar clinica</button>
+</div>
 </form>
+
+

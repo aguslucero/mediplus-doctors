@@ -38,4 +38,13 @@ export class DoctorService {
     return this.httpClient.post('/doctors/update', {doctor}, {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })});
   }
 
+  getAllClinics() {
+    return this.httpClient.get('/doctors/clinics');
+  }
+
+  clinicAdd( id: string ): Observable<any> {
+    return this.httpClient.post('/doctors/clinicAdd/' + id , {},
+     {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+
+  }
 }

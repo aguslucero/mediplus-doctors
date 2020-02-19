@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
      data => {
       data.forEach(element => {
        this.notifications.push(new AppointmentInfo(element.patient.person.firstName, element.patient.person.lastName,
-                        element.date, element.hour, element._id ));
+                        element.date, element.hour, element._id, element.observation ));
       });
      });
    }

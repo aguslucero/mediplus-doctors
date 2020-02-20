@@ -1,13 +1,20 @@
-  <div class="buttons-container">
-    <div class="home-button">
-      <span (click)="GoToDiaryView()"  class="button-content"> Mi Agenda </span>
+<div class="buttons-container">
+    <div class="home-button hvr-grow-shadow">
+      <div (click)="GoToDiaryView()"  class="button-content">        
+        <span class="button-title">Calendario</span>
+        <span class="button-description">Ver agenda de turnos</span> 
+      </div>
     </div>
-    <div class="home-button">
-      <span (click)="GoToScheduleView()" class="button-content"> Gestionar Horarios </span>
+    <div class="home-button  hvr-grow-shadow">
+      <div (click)="GoToScheduleView()" class="button-content">
+        <span class="button-title">Horarios</span>
+        <span class="button-description">Gestionar y modificar</span>
+      </div>
     </div>
-    <div class="home-button">
-      <span (click)="GoToPendingAppointment()"  class="button-content"> Turnos Pendientes
-         <span class="badge" *ngIf="pending > 0">{{pending}}</span>
-      </span>
+    <div class="home-button  hvr-grow-shadow">
+      <div (click)="GoToPendingAppointment()"  class="button-content">
+        <span class="button-title">Turnos pendientes</span>
+        <span class="button-description">Aceptar o rechazar</span>
+      </div>
     </div>
-  </div>
+</div>

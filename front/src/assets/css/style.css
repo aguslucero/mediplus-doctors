@@ -433,6 +433,8 @@ a {
   position: relative;
   z-index: 1;
   height: 780px;
+  height: 807px;
+  background-size: 110%;
 }
   @media (max-width: 992px) {
     .home_banner_area {

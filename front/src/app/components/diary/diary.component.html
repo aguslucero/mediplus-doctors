@@ -1,14 +1,26 @@
+<div class="container">
 <span (click)="goToHome()" class="back-label mat-raised-button">Volver al inicio</span>
-<div class="diary-container">
+
+<div class="spinner" *ngIf=!this.dataLoaded>
+  <mat-progress-spinner
+          color="primary"
+          mode="indeterminate"
+          value=100 >
+      </mat-progress-spinner>
+  </div>
+
+
+<div class="diary-container" *ngIf="dataLoaded">
   <h1 class="title">Agenda</h1>
   <button class="btn btn-primary" (click)="openDialog()"> proximos turnos </button>
   <app-diary-header [(view)]="view" [(viewDate)]="viewDate">
   </app-diary-header>
 
 
-  <div [ngSwitch]="view">
+  <div [ngSwitch]="view" class="scroll-bar">
     <mwl-calendar-month-view
       *ngSwitchCase="'month'"
+      [refresh]="refresh"
       [viewDate]="viewDate"
       [events]="events"
       (dayClicked)="viewDate = $event.day.date; view = 'day'"
@@ -28,4 +40,5 @@
     >
     </mwl-calendar-day-view>
   </div>
+</div>
 </div>

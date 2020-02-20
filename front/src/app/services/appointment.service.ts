@@ -25,4 +25,10 @@ export class AppointmentService {
     return this.httpClient.post('/doctors/rejectAppointment/' + id, {});
   }
 
+  getAllAppointments(): Observable<any> {
+    return this.httpClient.get('/appointments/doctor',
+      {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })}
+    );
+  }
+
 }

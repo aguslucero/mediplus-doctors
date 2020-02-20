@@ -15,8 +15,19 @@ router.get('/all', verifyToken, (req,res) => {
         res.json(response)
     })
     .catch(error => {
-        res.send(error)
+        res.send(error);
     });
+});
+
+router.get('/doctor', verifyToken, (req, res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/appointment/doctor/' + req.userId)
+    .then(response => {
+        res.json(response);
+    })
+    .catch(err => {
+        res.send(err);
+    })
+
 });
 
 

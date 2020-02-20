@@ -5,7 +5,9 @@ import { HealthCareService} from 'src/app/services/healthCareService/healthCare.
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HealthCare } from 'src/app/models/healthCare';
 import { HealthCareResponse } from 'src/app/Responses/healthCare.response';
+import { ClinicResponse } from 'src/app/Responses/clinic.response';
 import { DoctorService } from 'src/app/services/doctorService/doctor.service';
+import { Clinic } from 'src/app/models/clinic';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -20,19 +22,22 @@ export class DoctorProfileComponent implements OnInit {
               private health: HealthCareService,
               private doctorService: DoctorService) {
   }
-  clinics:  Clinics[] ;
-  clinicSelected: Clinics;
+  clinics:  Clinic[] = [];
+  clinicSelected: Clinic;
+  worksOnClinic: Clinic[];
+  deleteClinic: Clinic;
 
   ngOnInit() {
     this.getCurrentUser();
     this.getAllHealthCares();
     this.getAllClinics();
+    this.getDoctorClinics();
   }
 
   getCurrentUser() {
     this.auth.currentUser().subscribe(
       data => {
-        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.person.phone, data.adress);
+        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.person.phone, data.addres);
         this.user.dni = data.person.dni;
         this.user.birthDate = data.person.birthDate;
         this.user.speciality = data.speciality;
@@ -77,9 +82,8 @@ export class DoctorProfileComponent implements OnInit {
   getAllClinics() {
     this.clinics = [];
     this.doctorService.getAllClinics().subscribe(
-      (res: Clinics[]) => res.forEach(element => {
+      (res: Clinic[]) => res.forEach(element => {
         this.clinics.push(element) ;
-
       })
       );
   }
@@ -90,10 +94,26 @@ export class DoctorProfileComponent implements OnInit {
     (res) => console .log(res)
     );
   }
+
+  getDoctorClinics() {
+    this.worksOnClinic = [];
+    this.doctorService.getDoctorWorkClinics().subscribe((clinic) => {
+        clinic.forEach((clinica: ClinicResponse) => {
+        this.worksOnClinic.push(new Clinic(clinica._id, clinica.name, clinica.addres));
+      });
+    });
+    console.log('clinicas en las que trabaja' + this.worksOnClinic);
+  }
+
+  clinicDelete() {
+    console.log('se va a borrar la siguiente clinica: ' + this.deleteClinic);
+    this.doctorService.clinicDelete(this.deleteClinic._id).subscribe(
+      (res) => {
+        console.log(res);
+        location.reload();
+      },
+      (err) => console.log(err)
+    );
+  }
 }
 
-export class Clinics {
-_id: string;
-name: string;
-addres: string;
-}

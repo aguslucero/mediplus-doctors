@@ -138,7 +138,7 @@ router.post('/update', verifyToken, (req,res) => {
         }, 
         'doctor': {
             'speciality': req.body.doctor.speciality,
-            'adress': req.body.doctor.adress,
+            'addres': req.body.doctor.adress,
             'profileUrl': req.body.doctor.profileUrl
         }
     })
@@ -151,6 +151,29 @@ router.post('/update', verifyToken, (req,res) => {
     });
 });
 
+router.delete('/clinic/remove', verifyToken, (req,res) => {    
+    axios.delete('http://localhost:3001/vr/api/clinic/remove'+ req.userId,{ 
+        'clinic': req.params.clinicId,
+        'doctor': req.userId
+      })
+      .then(response => {
+          res.json(response)
+          console.log(response);
+      })
+      .catch(error => {
+          res.send(error)
+      });
+  });
+
+  router.get('/doctorClinics', verifyToken, (req,res) => {
+    api_helper.make_API_call('http://localhost:3001/vr/api/clinic/myclinics/'+ req.userId)
+        .then(response => {
+            res.json(response)
+        })
+        .catch(error => {
+            res.send(error)
+        });
+    });
 
 
 module.exports = router;

@@ -45,6 +45,15 @@ export class DoctorService {
   clinicAdd( id: string ): Observable<any> {
     return this.httpClient.post('/doctors/clinicAdd/' + id , {},
      {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+  }
 
+  clinicDelete( clinicId: string) {
+    return this.httpClient.delete('/doctors/clinicDelete/' + clinicId,
+    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+  }
+
+  getDoctorWorkClinics(): Observable<any> {
+    return this.httpClient.get('/doctors/doctorClinics',
+    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
   }
 }

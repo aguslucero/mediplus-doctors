@@ -98,19 +98,18 @@ export class DoctorProfileComponent implements OnInit {
   getDoctorClinics() {
     this.worksOnClinic = [];
     this.doctorService.getDoctorWorkClinics().subscribe((clinic) => {
-        clinic.forEach((clinica: ClinicResponse) => {
-        this.worksOnClinic.push(new Clinic(clinica._id, clinica.name, clinica.addres));
+        clinic.forEach((data) => {
+        this.worksOnClinic.push(new Clinic(data.clinic._id, data.clinic.name, data.clinic.addres));
       });
     });
     console.log('clinicas en las que trabaja' + this.worksOnClinic);
   }
 
   clinicDelete() {
-    console.log('se va a borrar la siguiente clinica: ' + this.deleteClinic);
     this.doctorService.clinicDelete(this.deleteClinic._id).subscribe(
       (res) => {
         console.log(res);
-        location.reload();
+        // location.reload();
       },
       (err) => console.log(err)
     );

@@ -81,9 +81,15 @@
     </div>
     <p>Desasociarse de una clinica</p>
     <div>
-      <div *ngFor="let clinic of worksOnClinic">
-        <span>{{clinic.name}}</span>
-        <!-- <button (click)='deleteclinic()'>Borrar</button> -->
+      <div>
+        <mat-form-field>
+          <mat-label>Clinica</mat-label>
+          <mat-select  [(ngModel)]="deleteClinic"  name="clinic" [ngModelOptions]="{standalone: true}" >
+            <mat-option *ngFor="let clinic of worksOnClinic" [value]="clinic">
+              {{clinic.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <div>

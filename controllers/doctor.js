@@ -151,11 +151,14 @@ router.post('/update', verifyToken, (req,res) => {
     });
 });
 
-router.delete('/clinic/remove', verifyToken, (req,res) => {    
-    axios.delete('http://localhost:3001/vr/api/clinic/remove'+ req.userId,{ 
-        'clinic': req.params.clinicId,
+router.delete('/clinic/remove/:id', verifyToken, (req,res) => {    
+    axios.delete('http://localhost:3001/vr/api/clinic/remove',{
+
+    data: { 
+        'clinic': req.params.id,
         'doctor': req.userId
-      })
+      }
+    })
       .then(response => {
           res.json(response)
           console.log(response);

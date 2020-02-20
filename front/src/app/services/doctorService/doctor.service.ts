@@ -48,8 +48,8 @@ export class DoctorService {
   }
 
   clinicDelete( clinicId: string) {
-    return this.httpClient.delete('/doctors/clinicDelete/' + clinicId,
-    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+    return this.httpClient.delete('/doctors/clinic/remove/'+ clinicId ,
+    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })}  );
   }
 
   getDoctorWorkClinics(): Observable<any> {

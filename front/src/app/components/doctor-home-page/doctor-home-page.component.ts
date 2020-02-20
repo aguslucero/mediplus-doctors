@@ -35,8 +35,9 @@ export class DoctorHomePageComponent implements OnInit {
 
   countPendingAppointment() {
     this.service.getPendingAppointments().subscribe(
-      data => { this.pending = data.length;
-                 }
+      data => {
+        this.pending = data.length;
+      }
     );
   }
 }

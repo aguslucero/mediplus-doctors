@@ -54,6 +54,13 @@ export class DoctorService {
 
   getDoctorWorkClinics(): Observable<any> {
     return this.httpClient.get('/doctors/doctorClinics',
-    {headers: new HttpHeaders({'Authorization': localStorage.getItem('token') })} );
+      {
+        headers: new HttpHeaders(
+          {
+            'Authorization': localStorage.getItem('token')
+          }
+        )
+      }
+    );
   }
 }

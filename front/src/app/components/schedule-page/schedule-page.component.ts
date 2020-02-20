@@ -1,7 +1,10 @@
 import { WorkableDay } from './../../models/workableDay';
 import { Component, OnInit } from '@angular/core';
 import {DoctorService} from '../../services/doctorService/doctor.service';
+import * as fromDoctorViewState from '../../containers/reducers/index';
+import * as DoctorViewActions from '../../containers/actions/doctor-view-status.actions';
 import { element } from 'protractor';
+import { Store } from '@ngrx/store';
 
 
 
@@ -19,7 +22,8 @@ export class SchedulePageComponent implements OnInit {
           {'name': 'Jueves', 'number': 4  }, {'name': 'Viernes', 'number': 5 }, {'name': 'Sabado', 'number': 6  },
           {'name': 'Domingo', 'number': 7 }];
   workabledays = [];
-  constructor(private doctorService: DoctorService ) {
+  constructor(private DoctorViewStore: Store<fromDoctorViewState.State>,
+    private doctorService: DoctorService ) {
 
   }
 
@@ -27,6 +31,10 @@ export class SchedulePageComponent implements OnInit {
 
     console.log(this.week);
     this.getWorkabledays();
+  }
+
+  goToHome = () => {
+    this.DoctorViewStore.dispatch(new DoctorViewActions.Home);
   }
 
 

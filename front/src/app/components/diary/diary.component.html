@@ -1,29 +1,31 @@
-<span (click)="goToHome()" class="back-label">Volver al inicio</span>
-<h1 class="title">Agenda</h1>
-<button class="btn btn-primary" (click)="openDialog()"> proximos turnos </button>
-<app-diary-header [(view)]="view" [(viewDate)]="viewDate">
-</app-diary-header>
+<span (click)="goToHome()" class="back-label mat-raised-button">Volver al inicio</span>
+<div class="diary-container">
+  <h1 class="title">Agenda</h1>
+  <button class="btn btn-primary" (click)="openDialog()"> proximos turnos </button>
+  <app-diary-header [(view)]="view" [(viewDate)]="viewDate">
+  </app-diary-header>
 
 
-<div [ngSwitch]="view">
-  <mwl-calendar-month-view
-    *ngSwitchCase="'month'"
-    [viewDate]="viewDate"
-    [events]="events"
-    (dayClicked)="viewDate = $event.day.date; view = 'day'"
-  >
-  </mwl-calendar-month-view>
-  <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
-    [viewDate]="viewDate"
-    [events]="events"
-    (dayHeaderClicked)="viewDate = $event.day.date; view = 'day'"
-  >
-  </mwl-calendar-week-view>
-  <mwl-calendar-day-view
-    *ngSwitchCase="'day'"
-    [viewDate]="viewDate"
-    [events]="events"
-  >
-  </mwl-calendar-day-view>
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="'month'"
+      [viewDate]="viewDate"
+      [events]="events"
+      (dayClicked)="viewDate = $event.day.date; view = 'day'"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="'week'"
+      [viewDate]="viewDate"
+      [events]="events"
+      (dayHeaderClicked)="viewDate = $event.day.date; view = 'day'"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="'day'"
+      [viewDate]="viewDate"
+      [events]="events"
+    >
+    </mwl-calendar-day-view>
+  </div>
 </div>

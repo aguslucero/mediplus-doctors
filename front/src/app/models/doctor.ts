@@ -6,7 +6,7 @@ export class Doctor {
   lastName: string;
   email: string;
   phone: string;
-  addres: string;
+  adress: string;
   prepaid: HealthCare[];
   dni: string;
   birthDate: string;
@@ -14,13 +14,13 @@ export class Doctor {
   profileUrl: string;
 
   constructor(id: string, firstName: string, lastName: string, email: string, prepaid: HealthCare[],phone: string,
-    addres: string) {
+    adress: string) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.prepaid = prepaid;
     this.phone = phone;
-    this.addres = addres;
+    this.adress = adress;
   }
 }

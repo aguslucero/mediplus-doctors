@@ -37,7 +37,7 @@ export class DoctorProfileComponent implements OnInit {
   getCurrentUser() {
     this.auth.currentUser().subscribe(
       data => {
-        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.person.phone, data.addres);
+        this.user = new Doctor(data._id, data.person.firstName, data.person.lastName, data.email, data.prepaid, data.person.phone, data.adress);
         this.user.dni = data.person.dni;
         this.user.birthDate = data.person.birthDate;
         this.user.speciality = data.speciality;
@@ -99,7 +99,7 @@ export class DoctorProfileComponent implements OnInit {
     this.worksOnClinic = [];
     this.doctorService.getDoctorWorkClinics().subscribe((clinic) => {
         clinic.forEach((data) => {
-        this.worksOnClinic.push(new Clinic(data.clinic._id, data.clinic.name, data.clinic.addres));
+        this.worksOnClinic.push(new Clinic(data.clinic._id, data.clinic.name, data.clinic.adress));
       });
     });
     console.log('clinicas en las que trabaja' + this.worksOnClinic);

@@ -138,7 +138,7 @@ router.post('/update', verifyToken, (req,res) => {
         }, 
         'doctor': {
             'speciality': req.body.doctor.speciality,
-            'addres': req.body.doctor.adress,
+            'adress': req.body.doctor.adress,
             'profileUrl': req.body.doctor.profileUrl
         }
     })

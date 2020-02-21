@@ -41,7 +41,7 @@ export class DoctorProfileComponent implements OnInit {
         this.user.dni = data.person.dni;
         this.user.birthDate = data.person.birthDate;
         this.user.speciality = data.speciality;
-        this.user.profileUrl = data.profileURL;
+        this.user.profileUrl = data.profileUrl;
       },
     );
   }

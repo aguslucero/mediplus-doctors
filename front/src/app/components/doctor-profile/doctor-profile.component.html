@@ -1,4 +1,11 @@
 <form class="profile-form">
+  <div *ngIf="user.profileUrl == null">
+    <span>Ingrese una imagen de perfil, una vez cargada se mostrara aqui</span>
+  </div>
+  <div *ngIf="user.profileUrl != null">
+    <p>Imagen de perfil</p>
+    <img class="photo" src="{{user.profileUrl}}" alt="Profile Picture">
+  </div>
   <p>Informacion personal</p>
   <div class="personal-data">
     <mat-form-field class="full-width">
@@ -36,6 +43,8 @@
       <mat-label>Dirreccion:</mat-label>
       <input matInput placeholder="Direccion:" [(ngModel)]="user.adress" [ngModelOptions]="{ standalone: true }"/>
     </mat-form-field>
+  </div>
+  <div>
     <mat-form-field class="full-width">
       <mat-label>Ingrese URL de imagen:</mat-label>
       <input matInput placeholder="Imagen URL:" [(ngModel)]="user.profileUrl" [ngModelOptions]="{ standalone: true }"/>
@@ -61,11 +70,14 @@
       <button mat-raised-button color="primary" (click)="saveHealthCare()">Guardar obra social</button>
     </div>
     <p style="padding-top: 15px;">Estas son las obras sociales ya añadidas</p>
-    <div *ngFor="let healthCare of user.prepaid">
-      <span>{{healthCare.name}}</span>
-      <!-- <button (click)='deleteHealthCare()'>Borrar</button> -->
+    <div class="working-healthscares" *ngFor="let healthCare of user.prepaid">
+      <ul>
+        <li>
+          <span>{{healthCare.name}}</span>
+        </li>
+      </ul>
     </div>
-    <p>usted trabaja para una clinica??</p>
+    <p>Usted trabaja para una clinica?</p>
     <div class="healt-care">
       <mat-form-field>
         <mat-label>Clinica</mat-label>

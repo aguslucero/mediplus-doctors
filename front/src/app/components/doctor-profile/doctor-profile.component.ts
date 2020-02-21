@@ -56,10 +56,6 @@ export class DoctorProfileComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-  deleteHealthCare() {
-    console.log('Se eliminara la siguiente obra social: ' + this.deleteHealthCare);
-
-  }
 
   getAllHealthCares() {
     this.health.getHealthCares().subscribe((healthCare) => {
@@ -91,7 +87,10 @@ export class DoctorProfileComponent implements OnInit {
   clinicAdd() {
     console.log(this.clinicSelected);
     this.doctorService.clinicAdd(this.clinicSelected._id).subscribe(
-    (res) => console .log(res)
+      (res) => {
+        console .log(res);
+        location.reload();
+      }
     );
   }
 
@@ -109,7 +108,7 @@ export class DoctorProfileComponent implements OnInit {
     this.doctorService.clinicDelete(this.deleteClinic._id).subscribe(
       (res) => {
         console.log(res);
-        // location.reload();
+        location.reload();
       },
       (err) => console.log(err)
     );

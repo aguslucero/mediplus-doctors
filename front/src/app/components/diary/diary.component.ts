@@ -56,8 +56,8 @@ export class DiaryComponent implements OnInit  {
     const appointmentsArray: Appointment[] = new Array;
     this.AS.getAllAppointments().subscribe(appointments => {
       appointments.forEach(appointment => {
-        const patient = new Patient(appointment.patient._id, appointment.patient.person.firstname,
-           appointment.patient.person.surname, appointment.patient.email, appointment.patient.person.phone, appointment.patient.person)
+        const patient = new Patient(appointment.patient._id, appointment.patient.person.firstName,
+           appointment.patient.person.lastName, appointment.patient.email, appointment.patient.person.phone, appointment.patient.person)
         appointmentsArray.push(new Appointment(patient, appointment.date, appointment.hour, appointment.rejected, appointment.approved));
       });
 
